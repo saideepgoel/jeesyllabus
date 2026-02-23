@@ -1,263 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEEStart Bridge: 11th to 12th Prerequisite Research</title>
-    
-    <!-- Favicon -->
+    <title>JEE Orbit | Modern Syllabus Navigator</title>
+
+    <!-- Link to the custom SVG favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <!-- Tailwind CSS (via CDN) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js (via CDN) -->
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- KaTeX CSS (For Math Formatting) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    
-    <!-- KaTeX JS & Auto-Render Extension -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-</head>
-<body class="flex flex-col min-h-screen">
 
-    <!-- Navigation / Header -->
-    <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <img src="favicon.svg" alt="Logo" class="w-8 h-8">
-                <span class="text-2xl font-bold text-teal-800 tracking-tight">JEEStart</span>
-                <span class="text-sm bg-stone-100 text-stone-600 px-2 py-1 rounded-md font-medium border border-stone-200">Research Wing</span>
+</head>
+
+<body class="h-screen flex flex-col overflow-hidden text-zinc-800 relative">
+
+    <!-- Background Decoration -->
+    <div class="bg-orb bg-indigo-200 w-96 h-96 top-[-10%] left-[-10%]"></div>
+    <div class="bg-orb bg-rose-200 w-80 h-80 bottom-[-10%] right-[-5%] animation-delay-2000"></div>
+
+    <!-- Header (Glassmorphic) -->
+    <header
+        class="glass-panel z-20 px-6 py-4 flex flex-col md:flex-row items-center justify-between shrink-0 m-4 rounded-[2rem]">
+        <div class="flex items-center gap-4 mb-4 md:mb-0">
+            <div
+                class="w-12 h-12 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-[1.25rem] flex items-center justify-center text-white text-2xl shadow-lg transform rotate-3 hover:rotate-0 transition-transform cursor-pointer">
+                🪐
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#overview" class="text-stone-600 hover:text-teal-700 font-medium transition">Overview</a>
-                <a href="#explorer" class="text-stone-600 hover:text-teal-700 font-medium transition">Subject Explorer</a>
-                <a href="#simulator" class="text-teal-700 font-semibold transition">Impact Simulator</a>
-            </nav>
+            <div>
+                <h1 class="text-2xl font-bold font-heading tracking-tight text-zinc-900 leading-none">JEE Orbit</h1>
+                <p class="text-sm text-zinc-500 font-medium mt-1">Syllabus Matrix</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 bg-zinc-200/50 p-1.5 rounded-full backdrop-blur-md">
+            <button onclick="setSubject('physics')" id="btn-physics"
+                class="px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-white text-indigo-600 shadow-indigo-100/50">Physics</button>
+            <button onclick="setSubject('chemistry')" id="btn-chemistry"
+                class="px-5 py-2.5 rounded-full text-sm font-semibold transition-all text-zinc-600 hover:bg-white/50">Chemistry</button>
+            <button onclick="setSubject('maths')" id="btn-maths"
+                class="px-5 py-2.5 rounded-full text-sm font-semibold transition-all text-zinc-600 hover:bg-white/50">Maths</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <div class="bg-stone-50 border-b border-stone-200" id="overview">
-        <div class="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mb-4">
-                11th Chapters Required for 12th Class
-            </h1>
-            <p class="text-lg text-stone-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Many students enter Class 12 with backlogs from Class 11. This interactive report analyzes the <span class="text-teal-700 font-semibold">critical prerequisites</span> needed to survive and excel in the Class 12 JEE syllabus. 
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
-                <div class="bg-white p-6 rounded-lg border border-stone-200 card-shadow">
-                    <div class="text-amber-600 font-bold text-lg mb-2">⚠ The Risk</div>
-                    <p class="text-stone-600 text-sm">~40% of Class 12 Physics & Maths relies heavily on concepts like Mechanics and Calculus basics taught in Class 11.</p>
+    <!-- Main Workspace -->
+    <div class="flex flex-1 overflow-hidden relative px-4 pb-4 gap-4">
+
+        <!-- Left Sidebar: Chapter List -->
+        <aside class="w-full md:w-2/5 lg:w-[35%] flex flex-col h-full z-10 relative">
+            <!-- Filters -->
+            <div class="pb-4 shrink-0">
+                <div class="relative mb-4 group">
+                    <input type="text" id="searchBox" placeholder="Search universe..."
+                        class="w-full pl-12 pr-4 py-3.5 glass-panel rounded-full text-sm focus:ring-2 focus:ring-zinc-300 focus:outline-none transition-all placeholder-zinc-400 font-medium">
+                    <svg class="absolute left-4 top-3.5 w-5 h-5 text-zinc-400 group-focus-within:text-zinc-600 transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
                 </div>
-                <div class="bg-white p-6 rounded-lg border border-stone-200 card-shadow">
-                    <div class="text-teal-700 font-bold text-lg mb-2">⚡ The Strategy</div>
-                    <p class="text-stone-600 text-sm">You don't need to master 100% of Class 11. Focus on the high-yield "Bridge Topics" identified below.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg border border-stone-200 card-shadow">
-                    <div class="text-indigo-600 font-bold text-lg mb-2">🎯 The Goal</div>
-                    <p class="text-stone-600 text-sm">Secure the continuity of your preparation. Fix the foundation before building the skyscraper.</p>
+                <div class="flex gap-2 text-sm bg-zinc-200/50 p-1 rounded-full backdrop-blur-md">
+                    <button onclick="filterClass('all')" id="filter-all"
+                        class="flex-1 py-2 rounded-full bg-zinc-800 text-white font-semibold transition-all shadow-md">All
+                        Time</button>
+                    <button onclick="filterClass(11)" id="filter-11"
+                        class="flex-1 py-2 rounded-full text-zinc-600 hover:bg-white/60 font-medium transition-all">Class
+                        11</button>
+                    <button onclick="filterClass(12)" id="filter-12"
+                        class="flex-1 py-2 rounded-full text-zinc-600 hover:bg-white/60 font-medium transition-all">Class
+                        12</button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-16">
+            <!-- List Container -->
+            <div id="chapter-list" class="flex-1 overflow-y-auto custom-scroll pr-2 space-y-3 pb-20">
+                <!-- Chapters injected by JS -->
+            </div>
+        </aside>
 
-        <!-- SECTION 1: Subject Explorer -->
-        <section id="explorer">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-stone-800">Subject-wise Dependency Explorer</h2>
-                <p class="text-stone-600 mt-2 max-w-3xl">
-                    Select a subject to visualize how Class 12 units are constructed upon Class 11 foundations. Click on any Class 12 Unit to reveal details.
+        <!-- Right Panel: Detail View (The "Island") -->
+        <main class="hidden md:flex flex-1 flex-col relative overflow-hidden glass-card" id="detail-panel">
+
+            <!-- Empty State -->
+            <div id="empty-state" class="flex flex-col items-center justify-center h-full text-center p-8 z-10">
+                <div
+                    class="w-32 h-32 bg-white/50 backdrop-blur-md rounded-full flex items-center justify-center mb-8 shadow-xl shadow-zinc-200/50">
+                    <svg class="w-12 h-12 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
+                        </path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-heading font-bold text-zinc-800 mb-3 tracking-tight">Select a Destination</h2>
+                <p class="text-zinc-500 max-w-sm text-lg leading-relaxed">
+                    Map your journey. Understand what to study and uncover hidden connections.
                 </p>
-            </div>
 
-            <!-- Subject Tabs -->
-            <div class="flex border-b border-stone-300 mb-6">
-                <button onclick="switchTab('physics')" id="tab-physics" class="tab-active px-6 py-3 text-sm md:text-base transition-colors focus:outline-none">Physics</button>
-                <button onclick="switchTab('chemistry')" id="tab-chemistry" class="tab-inactive px-6 py-3 text-sm md:text-base transition-colors focus:outline-none">Chemistry</button>
-                <button onclick="switchTab('maths')" id="tab-maths" class="tab-inactive px-6 py-3 text-sm md:text-base transition-colors focus:outline-none">Mathematics</button>
-            </div>
-
-            <!-- Tab Content Container -->
-            <div id="subject-content" class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-fade-in">
-                
-                <!-- Left: Chart & Stats -->
-                <div class="lg:col-span-1 space-y-6">
-                    <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
-                        <h3 class="font-semibold text-stone-700 mb-4 text-center">Prerequisite Intensity</h3>
-                        <div class="chart-container">
-                            <canvas id="dependencyChart"></canvas>
-                        </div>
-                        <div class="mt-4 text-xs text-center text-stone-500">
-                            Based on concept overlap & formula usage
-                        </div>
-                    </div>
-
-                    <div class="bg-teal-50 p-5 rounded-xl border border-teal-100">
-                        <h4 class="font-bold text-teal-800 mb-2">Analyst Note</h4>
-                        <p id="analyst-note" class="text-sm text-teal-900 leading-relaxed">
-                            Physics requires the strongest continuity. You cannot understand Electrostatics without Vectors, and Mechanics concepts (Force, Work, Energy) are applied everywhere.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Right: Interactive List -->
-                <div class="lg:col-span-2">
-                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden min-h-[500px] flex flex-col">
-                        <div class="bg-stone-100 px-6 py-3 border-b border-stone-200 flex justify-between items-center">
-                            <span class="font-semibold text-stone-700">Class 12 Syllabus Map</span>
-                            <span class="text-xs text-stone-500 bg-white px-2 py-1 rounded border">Click rows to expand</span>
-                        </div>
-                        
-                        <div id="chapter-list" class="divide-y divide-stone-100 flex-grow overflow-y-auto custom-scroll max-h-[600px]">
-                            <!-- Content injected via JS -->
-                        </div>
+                <div class="mt-16 w-full max-w-lg glass-panel p-8 rounded-[2rem]">
+                    <h3 class="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-6 text-left">Constellation
+                        Overview</h3>
+                    <div class="chart-container" style="height: 220px;">
+                        <canvas id="overviewChart"></canvas>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- SECTION 2: Impact Simulator -->
-        <section id="simulator" class="bg-stone-900 rounded-2xl p-8 text-stone-50 overflow-hidden relative">
-            <!-- Decorative circle -->
-            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-teal-500 rounded-full opacity-10 blur-3xl"></div>
+            <!-- Active Content -->
+            <div id="content-view" class="hidden h-full overflow-y-auto custom-scroll">
 
-            <div class="relative z-10">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
-                    <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Risk Simulator</h2>
-                        <p class="text-stone-400 max-w-2xl">
-                            Select the Class 11 chapters you are <span class="text-orange-400 font-semibold">weak</span> in. The system will calculate impact and can generate a personalized recovery plan.
-                        </p>
+                <!-- Fluid Hero Section -->
+                <div id="hero-section"
+                    class="relative p-10 md:p-14 overflow-hidden rounded-b-[3rem] transition-colors duration-700">
+                    <div class="relative z-10 max-w-3xl">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span id="detail-class-badge"
+                                class="px-4 py-1.5 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-md border border-white/20 uppercase tracking-widest shadow-sm">Class
+                                11</span>
+                            <span id="detail-subject-badge"
+                                class="px-4 py-1.5 rounded-full text-xs font-bold bg-black/20 text-white backdrop-blur-md border border-white/10 uppercase tracking-widest shadow-sm">Physics</span>
+                        </div>
+                        <h1 id="detail-title"
+                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading mb-4 text-white tracking-tight leading-tight drop-shadow-sm">
+                            Kinematics</h1>
+                        <p id="detail-tagline" class="text-white/80 text-xl font-medium max-w-2xl leading-relaxed">The
+                            study of motion without considering forces.</p>
                     </div>
-                    <button onclick="resetSimulator()" class="px-4 py-2 bg-stone-700 hover:bg-stone-600 text-stone-200 rounded-lg text-sm font-medium transition">
-                        Reset Simulator
-                    </button>
+
+                    <!-- Decorative Icon -->
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-[15rem] font-heading select-none pointer-events-none transform rotate-12 transition-transform duration-1000"
+                        id="hero-icon">
+                        ⚛️
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- Input: Checkboxes -->
-                    <div class="lg:col-span-7 bg-stone-800 rounded-xl p-6 border border-stone-700">
-                        <div class="flex gap-4 mb-4 border-b border-stone-700 pb-2">
-                            <button onclick="setSimSubject('physics')" class="text-sm font-medium text-teal-400 hover:text-teal-300">Physics</button>
-                            <button onclick="setSimSubject('chemistry')" class="text-sm font-medium text-stone-400 hover:text-stone-300">Chemistry</button>
-                            <button onclick="setSimSubject('maths')" class="text-sm font-medium text-stone-400 hover:text-stone-300">Maths</button>
-                        </div>
-                        <h4 class="text-stone-300 text-sm uppercase tracking-wider font-bold mb-4" id="sim-subject-title">Select Weak Physics Topics</h4>
-                        
-                        <div id="sim-checkboxes" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-64 overflow-y-auto custom-scroll pr-2">
-                            <!-- Checkboxes injected via JS -->
-                        </div>
-                    </div>
+                <!-- Content Body -->
+                <div class="p-8 md:p-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-                    <!-- Output: Risk Meter -->
-                    <div class="lg:col-span-5 flex flex-col justify-between bg-stone-800 rounded-xl p-6 border border-stone-700">
-                        <div>
-                            <h4 class="text-stone-300 text-sm uppercase tracking-wider font-bold mb-6 text-center">Class 12 Syllabus At Risk</h4>
-                            
-                            <div class="chart-container mx-auto" style="height: 180px;">
-                                <canvas id="riskChart"></canvas>
+                        <!-- Left Col: What to Study & Significance -->
+                        <div class="lg:col-span-7 space-y-8">
+                            <!-- Key Topics Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] fade-slide-up"
+                                style="animation-delay: 0.1s;">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-600">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-zinc-800 font-heading">Core Concepts</h3>
+                                </div>
+                                <ul id="topic-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Topics injected here -->
+                                </ul>
                             </div>
 
-                            <div class="mt-4 text-center">
-                                <div id="risk-score" class="text-4xl font-bold text-emerald-400 transition-colors duration-500">0%</div>
-                                <div class="text-stone-400 text-sm mt-1">Impact Score</div>
+                            <!-- "Why it Matters" / Insights -->
+                            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-100/50 fade-slide-up"
+                                style="animation-delay: 0.2s;">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-bold text-indigo-900 font-heading">JEE Significance</h4>
+                                </div>
+                                <p id="significance-text"
+                                    class="text-indigo-900/80 text-lg leading-relaxed font-medium">
+                                    This chapter forms the backbone of mechanics. Without mastering this, Mechanics and
+                                    Electromagnetism will be extremely difficult.
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Gemini Feature: Recovery Plan -->
-                        <div class="mt-6 border-t border-stone-700 pt-6">
-                             <button onclick="generateRecoveryPlan()" class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-500 hover:to-teal-700 text-white rounded-lg shadow-lg font-bold transition transform hover:scale-[1.02]">
-                                <span class="text-lg">✨</span> Generate Recovery Plan
-                            </button>
-                            <p class="text-xs text-stone-500 text-center mt-2">Powered by Gemini AI</p>
+                        <!-- Right Col: Prerequisites & Connections -->
+                        <div class="lg:col-span-5 space-y-8">
+                            <!-- Prerequisites Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] fade-slide-up"
+                                style="animation-delay: 0.3s;">
+                                <div class="flex flex-col mb-6">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-zinc-800 font-heading">Prerequisites</h3>
+                                    </div>
+                                    <p class="text-sm text-zinc-400 ml-13 font-medium">Master these first</p>
+                                </div>
+                                <div id="prereq-container" class="space-y-3">
+                                    <!-- Prereqs injected here -->
+                                </div>
+                            </div>
+
+                            <!-- Unlocks Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] fade-slide-up"
+                                style="animation-delay: 0.4s;">
+                                <div class="flex flex-col mb-6">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center text-teal-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-zinc-800 font-heading">Next Steps</h3>
+                                    </div>
+                                    <p class="text-sm text-zinc-400 ml-13 font-medium">Chapters that rely on this</p>
+                                </div>
+                                <div id="unlocks-container" class="space-y-3">
+                                    <!-- Future chapters injected here -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </main>
 
-        <!-- SECTION 3: The "Golden List" (Actionable Takeaways) -->
-        <section class="pb-12">
-            <h2 class="text-2xl font-bold text-stone-800 mb-6">The "Must-Do" Golden Chapters</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Physics Card -->
-                <div class="bg-white border-l-4 border-indigo-500 p-6 rounded-r-lg shadow-sm">
-                    <h3 class="font-bold text-lg text-stone-800 mb-3">Physics: The Backbone</h3>
-                    <ul class="space-y-2 text-sm text-stone-600">
-                        <li class="flex items-start"><span class="mr-2 text-indigo-500">➜</span> <b>Vectors:</b> The language of 12th Physics.</li>
-                        <li class="flex items-start"><span class="mr-2 text-indigo-500">➜</span> <b>Work, Power, Energy:</b> Used in electrostatics & modern physics.</li>
-                        <li class="flex items-start"><span class="mr-2 text-indigo-500">➜</span> <b>SHM:</b> Crucial for Alternating Current & Wave Optics.</li>
-                    </ul>
-                </div>
-                 <!-- Chemistry Card -->
-                 <div class="bg-white border-l-4 border-emerald-500 p-6 rounded-r-lg shadow-sm">
-                    <h3 class="font-bold text-lg text-stone-800 mb-3">Chemistry: The Chains</h3>
-                    <ul class="space-y-2 text-sm text-stone-600">
-                        <li class="flex items-start"><span class="mr-2 text-emerald-500">➜</span> <b>GOC & Hydrocarbons:</b> 12th Organic is impossible without this.</li>
-                        <li class="flex items-start"><span class="mr-2 text-emerald-500">➜</span> <b>Chemical Bonding:</b> The logic behind Inorganic Chemistry.</li>
-                        <li class="flex items-start"><span class="mr-2 text-emerald-500">➜</span> <b>Mole Concept:</b> Essential for Physical Chemistry calculations.</li>
-                    </ul>
-                </div>
-                 <!-- Maths Card -->
-                 <div class="bg-white border-l-4 border-rose-500 p-6 rounded-r-lg shadow-sm">
-                    <h3 class="font-bold text-lg text-stone-800 mb-3">Maths: The Tools</h3>
-                    <ul class="space-y-2 text-sm text-stone-600">
-                        <li class="flex items-start"><span class="mr-2 text-rose-500">➜</span> <b>Functions & Graphs:</b> The foundation of Calculus (40% of 12th).</li>
-                        <li class="flex items-start"><span class="mr-2 text-rose-500">➜</span> <b>Trigonometry:</b> Formulas appear in Integration & Inverse Trig.</li>
-                        <li class="flex items-start"><span class="mr-2 text-rose-500">➜</span> <b>Limits:</b> Direct link to Continuity & Differentiability.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-white border-t border-stone-200 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-sm text-stone-500">
-                © 2024 JEEStart Research. Educational Purpose Only.
-            </div>
-            <div class="text-xs text-stone-400">
-                Data based on standard JEE Main/Advanced Syllabus Patterns.
-            </div>
-        </div>
-    </footer>
-
-    <!-- AI Result Modal -->
-    <div id="ai-modal" class="fixed inset-0 z-[100] hidden modal-overlay flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-3xl rounded-xl shadow-2xl flex flex-col max-h-[85vh]">
-            <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50 rounded-t-xl">
-                <h3 id="modal-title" class="text-xl font-bold text-teal-800 flex items-center gap-2">
-                    <span class="text-2xl">✨</span> AI Insights
-                </h3>
-                <button onclick="closeModal()" class="text-stone-400 hover:text-stone-600 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <div class="p-6 overflow-y-auto custom-scroll flex-grow text-stone-700 leading-relaxed text-sm md:text-base" id="modal-content">
-                <!-- Content injected here -->
-            </div>
-            <div class="p-4 border-t border-stone-100 bg-stone-50 rounded-b-xl flex justify-end">
-                <button onclick="closeModal()" class="px-4 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 font-medium rounded-lg transition">Close</button>
-            </div>
+        <!-- Mobile Overlay -->
+        <div id="mobile-detail-overlay"
+            class="fixed inset-0 z-[100] bg-zinc-50/90 backdrop-blur-xl transform translate-x-full transition-transform duration-500 md:hidden overflow-y-auto">
+            <button onclick="closeMobileDetail()"
+                class="fixed top-6 right-6 z-[110] w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-zinc-800 hover:scale-105 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+            <div id="mobile-detail-content" class="h-full"></div>
         </div>
     </div>
-
-    <!-- Custom JS (Logic + API Key) -->
     <script src="script.js"></script>
+
 </body>
+
 </html>

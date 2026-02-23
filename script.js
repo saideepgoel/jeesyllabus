@@ -1,589 +1,354 @@
 // --- GEMINI API CONFIG ---
-const apiKey = "AIzaSyAnh8v0E0qY8z5ZPOD6Y1g5FIV_QEbUOUQ"; 
+const apiKey = "AIzaSyAnh8v0E0qY8z5ZPOD6Y1g5FIV_QEbUOUQ";
 
-// --- DATA STORE ---
-const syllabusData = {
+// --- 1. DATA STORE ---
+const syllabusDB = {
+    physics: [
+        { id: "p11_01", title: "Units & Measurements", class: 11, desc: "Error analysis and dimensional formulas.", significance: "Used in every single chapter to check formula consistency. 4-8 marks guaranteed in JEE Main.", topics: ["Dimensional Analysis", "Significant Figures", "Errors", "Vernier Caliper"], prereqs: [] },
+        { id: "p11_02", title: "Vectors & Basic Maths", class: 11, desc: "Mathematical tools for Physics.", significance: "CRITICAL. You cannot do Physics without Vectors and Calculus.", topics: ["Vector Addition", "Dot & Cross Product", "Differentiation", "Integration"], prereqs: [] },
+        { id: "p11_03", title: "Kinematics (1D & 2D)", class: 11, desc: "Motion of objects without reference to forces.", significance: "Foundation of mechanics. Projectile motion concepts recur in Electrostatics.", topics: ["Equations of Motion", "Graphs (v-t, x-t)", "Projectile Motion", "Relative Velocity"], prereqs: ["p11_02"] },
+        { id: "p11_04", title: "Newton's Laws of Motion", class: 11, desc: "Forces, Equilibrium, and Dynamics.", significance: "The heart of classical physics. Free Body Diagrams (FBD) are the #1 skill in JEE Physics.", topics: ["FBD Drawing", "Law of Inertia", "Conservation of Momentum", "Friction"], prereqs: ["p11_03", "p11_02"] },
+        { id: "p11_05", title: "Work, Power & Energy", class: 11, desc: "Energy conservation principles.", significance: "Provides shortcuts to solve difficult Newton's Laws problems. Essential for Electrostatics.", topics: ["Work-Energy Theorem", "Potential Energy", "Spring Force", "Vertical Circular Motion"], prereqs: ["p11_04", "p11_02"] },
+        { id: "p11_06", title: "Center of Mass & Collisions", class: 11, desc: "System of particles and momentum conservation.", significance: "Vital for Rotation and Modern Physics (nuclear collisions).", topics: ["COM Calculation", "Momentum Conservation", "Collisions", "Coefficient of Restitution"], prereqs: ["p11_05", "p11_04"] },
+        { id: "p11_07", title: "Rotational Motion", class: 11, desc: "Dynamics of rigid bodies.", significance: "The 'Final Boss' of Class 11. Combines every concept learned so far.", topics: ["Moment of Inertia", "Torque", "Rolling Motion", "Angular Momentum Conservation"], prereqs: ["p11_06", "p11_05", "p11_04", "p11_02"] },
+        { id: "p11_08", title: "Gravitation", class: 11, desc: "Universal law of gravitation and satellites.", significance: "Direct analogue to Electrostatics. Master this, and Electrostatics becomes 50% easier.", topics: ["Gravitational Field & Potential", "Kepler's Laws", "Escape Velocity", "Satellite Motion"], prereqs: ["p11_05", "p11_07"] },
+        { id: "p11_09", title: "Solids & Fluids", class: 11, desc: "Properties of matter.", significance: "Scoring topic. Fluid concepts often mixed with SHM.", topics: ["Young's Modulus", "Pascal's Law", "Archimedes Principle", "Bernoulli's Theorem"], prereqs: ["p11_04"] },
+        { id: "p11_10", title: "Thermal Physics", class: 11, desc: "Heat, Thermodynamics, and KTG.", significance: "High weightage in JEE Main. Overlaps with Chemistry Thermodynamics.", topics: ["Calorimetry", "Thermal Expansion", "First Law of Thermodynamics", "Heat Engines"], prereqs: ["p11_05"] },
+        { id: "p11_11", title: "SHM & Waves", class: 11, desc: "Oscillatory motion and wave propagation.", significance: "Basis for AC Circuits (12th) and Wave Optics (12th).", topics: ["Equation of SHM", "Energy in SHM", "Sound Waves", "Doppler Effect"], prereqs: ["p11_03", "p11_04", "p11_05"] },
+        { id: "p12_01", title: "Electrostatics", class: 12, desc: "Static charges, fields, and potentials.", significance: "The start of Electromagnetism. Huge weightage.", topics: ["Coulomb's Law", "Gauss Law", "Electric Potential", "Capacitors & Dielectrics"], prereqs: ["p11_02", "p11_04", "p11_05", "p11_08"] },
+        { id: "p12_02", title: "Current Electricity", class: 12, desc: "Electric current, resistance, and circuits.", significance: "Easiest high-scoring chapter in 12th Physics.", topics: ["Ohm's Law", "Kirchhoff's Laws", "Combination of Resistors", "Measuring Instruments"], prereqs: ["p12_01", "p11_10"] },
+        { id: "p12_03", title: "Magnetic Effects of Current", class: 12, desc: "Magnetic fields due to moving charges.", significance: "Requires strong visualization and vector cross-product skills.", topics: ["Biot-Savart Law", "Ampere's Law", "Force on Charge/Wire", "Cyclotron"], prereqs: ["p12_02", "p11_02", "p11_07"] },
+        { id: "p12_04", title: "Magnetism & Matter", class: 12, desc: "Earth's magnetism and magnetic properties.", significance: "Theory heavy, quick to solve.", topics: ["Earth's Magnetism", "Hysteresis", "Para/Dia/Ferro Materials"], prereqs: ["p12_03"] },
+        { id: "p12_05", title: "EMI & AC", class: 12, desc: "Electromagnetic Induction and Alternating Current.", significance: "Combines Calc, SHM, and Magnetism.", topics: ["Faraday's & Lenz's Law", "Self/Mutual Inductance", "LCR Circuits", "Transformers"], prereqs: ["p12_03", "p11_11"] },
+        { id: "p12_06", title: "Ray Optics", class: 12, desc: "Reflection, Refraction, and Instruments.", significance: "Independent unit but long. Good geometry skills needed.", topics: ["Mirror Formula", "Snell's Law & TIR", "Lens Maker's Formula", "Optical Instruments"], prereqs: ["p11_01"] },
+        { id: "p12_07", title: "Wave Optics", class: 12, desc: "Light as a wave: Interference and Diffraction.", significance: "Direct application of Class 11 Waves chapter.", topics: ["Huygens Principle", "YDSE", "Diffraction", "Polarization"], prereqs: ["p11_11"] },
+        { id: "p12_08", title: "Modern Physics", class: 12, desc: "Dual Nature, Atoms, and Nuclei.", significance: "Highest ROI. Easy math, high marks.", topics: ["Photoelectric Effect", "Bohr Model", "Radioactivity", "Nuclear Fission/Fusion"], prereqs: ["p11_06", "p12_01"] },
+        { id: "p12_09", title: "Semiconductors", class: 12, desc: "Electronic devices and Logic Gates.", significance: "Logic gates are a guaranteed question.", topics: ["PN Junction Diode", "Transistors", "Logic Gates", "Zener Diode"], prereqs: ["p12_02"] }
+    ],
+    chemistry: [
+        { id: "c11_01", title: "Mole Concept", class: 11, desc: "Stoichiometry and basic calculations.", significance: "The alphabet of Chemistry. Used everywhere.", topics: ["Moles & Molar Mass", "Concentration Terms", "Limiting Reagent", "Stoichiometry"], prereqs: [] },
+        { id: "c11_02", title: "Atomic Structure", class: 11, desc: "Quantum numbers and electronic configuration.", significance: "Basis for Periodicity and Bonding.", topics: ["Bohr Model", "Quantum Numbers", "Electronic Config", "Shape of Orbitals"], prereqs: ["c11_01"] },
+        { id: "c11_03", title: "Periodic Table", class: 11, desc: "Trends in element properties.", significance: "Foundation of Inorganic Chemistry.", topics: ["Ionization Energy", "Atomic Radius", "Electron Gain Enthalpy", "Electronegativity"], prereqs: ["c11_02"] },
+        { id: "c11_04", title: "Chemical Bonding", class: 11, desc: "How atoms form molecules.", significance: "MOST IMPORTANT CHAPTER. Controls Organic & Inorganic.", topics: ["VSEPR Theory", "Hybridization", "MOT", "Hydrogen Bonding"], prereqs: ["c11_03"] },
+        { id: "c11_05", title: "States of Matter & Redox", class: 11, desc: "Gas laws and Oxidation numbers.", significance: "Gas laws used in Thermo. Redox used in Electrochemistry.", topics: ["Ideal Gas Equation", "Real Gases", "Oxidation States", "Balancing Redox"], prereqs: ["c11_01"] },
+        { id: "c11_06", title: "Thermodynamics", class: 11, desc: "Energy changes in reactions.", significance: "Concepts of Entropy and Gibbs Free Energy govern spontaneity.", topics: ["Enthalpy", "Entropy", "Gibbs Energy", "Hess's Law"], prereqs: ["c11_01", "c11_05"] },
+        { id: "c11_07", title: "Equilibrium", class: 11, desc: "Reversible reactions and pH.", significance: "Ionic Equilibrium is tough but critical for Electrochemistry.", topics: ["Le Chatelier Principle", "Kp/Kc", "pH Calculation", "Solubility Product"], prereqs: ["c11_01", "c11_06"] },
+        { id: "c11_08", title: "GOC", class: 11, desc: "Mechanism basics of Organic Chemistry.", significance: "DO OR DIE. If you fail GOC, you fail 12th Organic.", topics: ["Inductive/Mesomeric Effect", "Resonance", "Carbocation Stability", "Isomerism"], prereqs: ["c11_04"] },
+        { id: "c11_09", title: "Hydrocarbons", class: 11, desc: "Alkanes, Alkenes, Alkynes, Benzene.", significance: "Introduction to reaction mechanisms used in 12th.", topics: ["Markovnikov's Rule", "Ozonolysis", "Friedel Crafts Reaction", "Nitration"], prereqs: ["c11_08"] },
+        { id: "c12_01", title: "Solutions", class: 12, desc: "Liquid solutions and Colligative properties.", significance: "Formula based, scoring.", topics: ["Raoult's Law", "Colligative Properties", "Van't Hoff Factor"], prereqs: ["c11_01", "c11_07"] },
+        { id: "c12_02", title: "Electrochemistry", class: 12, desc: "Redox reactions and electricity.", significance: "High weightage Physical Chemistry chapter.", topics: ["Nernst Equation", "Conductance", "Batteries & Cells", "Faraday's Laws"], prereqs: ["c11_05", "c11_07", "c11_06"] },
+        { id: "c12_03", title: "Chemical Kinetics", class: 12, desc: "Rate of reactions.", significance: "Easy to score.", topics: ["Rate Law & Order", "Integrated Rate Equations", "Arrhenius Equation"], prereqs: ["c11_01", "c11_07"] },
+        { id: "c12_04", title: "Coordination Compounds", class: 12, desc: "Complex salts and ligands.", significance: "Major Inorganic chapter. Requires strong Bonding concepts.", topics: ["IUPAC Naming", "Werner's Theory", "VBT & CFT", "Isomerism"], prereqs: ["c11_04", "c11_05"] },
+        { id: "c12_05", title: "Block Chemistry", class: 12, desc: "Properties of specific group elements.", significance: "Memory intensive. Pattern recognition needed.", topics: ["Group 15-18 Trends", "Transition Metals", "Lanthanoid Contraction"], prereqs: ["c11_03"] },
+        { id: "c12_06", title: "Haloalkanes & Arenes", class: 12, desc: "Organic compounds with Halogens.", significance: "Entry to 12th Organic. SN1/SN2 mechanisms taught here.", topics: ["SN1 vs SN2", "Elimination Reactions", "Grignard Reagent", "Stereochemistry"], prereqs: ["c11_08", "c11_09"] },
+        { id: "c12_07", title: "Alcohols, Phenols, Ethers", class: 12, desc: "Oxygen containing organic compounds.", significance: "Reaction heavy.", topics: ["Dehydration", "Reimer-Tiemann", "Ether Synthesis", "Acidity of Phenols"], prereqs: ["c12_06", "c11_08"] },
+        { id: "c12_08", title: "Aldehydes, Ketones, Acids", class: 12, desc: "Carbonyl compounds.", significance: "The biggest Organic chapter. Name reactions galore.", topics: ["Aldol Condensation", "Cannizzaro Reaction", "Nucleophilic Addition", "Decarboxylation"], prereqs: ["c12_07", "c11_08"] },
+        { id: "c12_09", title: "Amines & Biomolecules", class: 12, desc: "Nitrogen compounds and Life chemistry.", significance: "Biomolecules is free marks (easy memory).", topics: ["Basic Strength of Amines", "Hofmann Bromamide", "Carbohydrates", "Proteins"], prereqs: ["c12_08"] }
+    ],
+    maths: [
+        { id: "m11_01", title: "Sets, Relations & Functions", class: 11, desc: "Basics of mathematical mapping.", significance: "Foundation for Calculus.", topics: ["Set Theory", "Domain & Range", "Types of Functions", "Inequalities"], prereqs: [] },
+        { id: "m11_02", title: "Trigonometry", class: 11, desc: "Angles and ratios.", significance: "The oxygen of JEE Maths. Used in Calculus, Vectors, Complex Numbers.", topics: ["Compound Angles", "Trig Equations", "Solution of Triangles", "Multiple Angles"], prereqs: [] },
+        { id: "m11_03", title: "Quadratic & Complex Numbers", class: 11, desc: "Polynomials and Imaginary numbers.", significance: "Algebra heavyweights.", topics: ["Roots & Coefficients", "Location of Roots", "Iota powers", "Cube root of unity"], prereqs: ["m11_01"] },
+        { id: "m11_04", title: "Permutation & Combination", class: 11, desc: "Counting principles.", significance: "Requires pure logic. Prerequisite for Probability.", topics: ["Arrangements", "Selections", "Circular Permutation", "Distribution"], prereqs: [] },
+        { id: "m11_05", title: "Binomial & Sequences", class: 11, desc: "Expansions and Series.", significance: "Series summation is used in Definite Integration.", topics: ["General Term", "Binomial Coefficients", "AP/GP/HP", "Special Series"], prereqs: [] },
+        { id: "m11_06", title: "Coordinate Geometry", class: 11, desc: "Straight Lines & Circles.", significance: "Huge chunk of 11th Maths.", topics: ["Slope & Equations", "Distance Formula", "Family of Lines", "Tangents"], prereqs: ["m11_01", "m11_03"] },
+        { id: "m11_07", title: "Conic Sections", class: 11, desc: "Parabola, Ellipse, Hyperbola.", significance: "Extension of Circles logic.", topics: ["Standard Equations", "Tangent/Normal conditions", "Parametric Coordinates"], prereqs: ["m11_06"] },
+        { id: "m11_08", title: "Limits & Derivatives", class: 11, desc: "Intro to Calculus.", significance: "The bridge to Class 12 Calculus.", topics: ["L'Hopital Rule", "Standard Limits", "First Principle of Derivative"], prereqs: ["m11_02", "m11_01"] },
+        { id: "m12_01", title: "Relations & Functions", class: 12, desc: "Advanced mapping properties.", significance: "First chapter of 12th. Essential for Inverse Trig.", topics: ["One-One/Onto", "Composite Functions", "Inverse Functions", "Modulus Graphs"], prereqs: ["m11_01", "m11_02"] },
+        { id: "m12_02", title: "Inverse Trigonometry", class: 12, desc: "Trig functions in reverse.", significance: "Formulas used extensively in Differentiation/Integration.", topics: ["Principal Value", "Property conversions", "Simplification"], prereqs: ["m12_01", "m11_02"] },
+        { id: "m12_03", title: "Matrices & Determinants", class: 12, desc: "Linear algebra arrays.", significance: "Independent, high scoring, easy.", topics: ["Matrix Multiplication", "Inverse & Adjoint", "Cramer's Rule", "Properties"], prereqs: [] },
+        { id: "m12_04", title: "Continuity & Differentiability", class: 12, desc: "Calculus foundations.", significance: "Critical for the rest of Calculus.", topics: ["Continuity checks", "Differentiability at a point", "Chain Rule"], prereqs: ["m11_08", "m12_01"] },
+        { id: "m12_05", title: "Applications of Derivatives", class: 12, desc: "Using slopes to analyze curves.", significance: "High weightage. Maxima/Minima is everywhere.", topics: ["Tangents/Normals", "Increasing/Decreasing", "Maxima/Minima", "Rate Measure"], prereqs: ["m12_04", "m11_06"] },
+        { id: "m12_06", title: "Definite & Indefinite Integration", class: 12, desc: "Reverse differentiation and Area.", significance: "The hardest part of JEE Maths. Needs practice.", topics: ["Substitution", "By-Parts", "King's Property", "Area Under Curve"], prereqs: ["m12_04", "m11_02"] },
+        { id: "m12_07", title: "Differential Equations", class: 12, desc: "Solving equations involving derivatives.", significance: "Guaranteed question. Methodical.", topics: ["Variable Separable", "Homogeneous Eq", "Linear DE"], prereqs: ["m12_06"] },
+        { id: "m12_08", title: "Vectors & 3D Geometry", class: 12, desc: "Geometry in space.", significance: "Highest weightage in recent JEE Mains. Must do.", topics: ["Dot/Cross Product", "Scalar Triple Product", "Equation of Line/Plane", "Shortest Distance"], prereqs: ["m11_02"] },
+        { id: "m12_09", title: "Probability", class: 12, desc: "Chance and Bayes Theorem.", significance: "Tricky but logical.", topics: ["Conditional Probability", "Bayes Theorem", "Bernoulli Trials"], prereqs: ["m11_04"] }
+    ]
+};
+
+// --- 2. STATE MANAGEMENT ---
+let currentSubject = 'physics';
+let currentClassFilter = 'all';
+let currentChapterId = null;
+
+const themes = {
     physics: {
-        summary: "Physics requires the strongest continuity. Mechanics concepts (Force, Work, Energy) are the alphabet of 12th Physics.",
-        dependencyData: [70, 20, 10], 
-        chapters: [
-            {
-                name: "Electrostatics",
-                desc: "Electric charges and fields, Potential",
-                prereqs: [
-                    { name: "Vectors", importance: "Critical", reason: "Field calculations require vector addition & resolution." },
-                    { name: "Work, Power & Energy", importance: "Critical", reason: "Electric Potential Energy is analogous to Gravitational PE." },
-                    { name: "Newton's Laws of Motion", importance: "High", reason: "Equilibrium problems involving charges." }
-                ]
-            },
-            {
-                name: "Current Electricity",
-                desc: "Ohm's law, Circuits, Cells",
-                prereqs: [
-                    { name: "Basic Kinematics", importance: "Medium", reason: "Drift velocity concepts." },
-                    { name: "Work, Power & Energy", importance: "High", reason: "Heat dissipation and power calculations." }
-                ]
-            },
-            {
-                name: "Magnetism & Matter",
-                desc: "Magnetic effects of current",
-                prereqs: [
-                    { name: "Vectors", importance: "Critical", reason: "Cross products (Biot-Savart Law, Lorentz Force)." },
-                    { name: "Circular Motion", importance: "High", reason: "Motion of charged particles in magnetic fields." }
-                ]
-            },
-            {
-                name: "Alternating Current (AC)",
-                desc: "LCR circuits, Resonance",
-                prereqs: [
-                    { name: "Simple Harmonic Motion (SHM)", importance: "Critical", reason: "AC equations are sinusoidal, same math as SHM." },
-                    { name: "Waves", importance: "Medium", reason: "Phase difference concepts." }
-                ]
-            },
-            {
-                name: "Optics (Ray & Wave)",
-                desc: "Reflection, Refraction, Interference",
-                prereqs: [
-                    { name: "Waves", importance: "Critical", reason: "Wave Optics is a direct extension of 11th Waves." },
-                    { name: "Basic Geometry", importance: "Medium", reason: "Ray diagrams require geometry." }
-                ]
-            },
-            {
-                name: "Modern Physics",
-                desc: "Atoms, Nuclei, Dual Nature",
-                prereqs: [
-                    { name: "Work, Power & Energy", importance: "High", reason: "Energy levels and transitions." },
-                    { name: "Chemistry Structure of Atom", importance: "High", reason: "Heavy overlap with 11th Chemistry." }
-                ]
-            }
-        ],
-        class11: [
-            { id: "p1", name: "Vectors", impact: 25 },
-            { id: "p2", name: "Units & Dimensions", impact: 5 },
-            { id: "p3", name: "Kinematics 1D/2D", impact: 10 },
-            { id: "p4", name: "Newton's Laws (NLM)", impact: 15 },
-            { id: "p5", name: "Work, Power, Energy", impact: 20 },
-            { id: "p6", name: "Rotational Motion", impact: 10 }, 
-            { id: "p7", name: "Gravitation", impact: 15 }, 
-            { id: "p8", name: "SHM", impact: 12 },
-            { id: "p9", name: "Waves", impact: 12 },
-            { id: "p10", name: "Thermodynamics", impact: 5 }
-        ]
+        btnOn: 'bg-white text-indigo-600 shadow-indigo-200 shadow-md', btnOff: 'text-zinc-600 hover:bg-white/50',
+        gradient: 'bg-gradient-to-br from-indigo-500 to-purple-600',
+        icon: '⚛️', cardAccent: '#4f46e5'
     },
     chemistry: {
-        summary: "Organic Chemistry is a chain; if you break 11th GOC, 12th Organic collapses. Inorganic relies on Bonding.",
-        dependencyData: [60, 30, 10],
-        chapters: [
-            {
-                name: "Solutions",
-                desc: "Colligative properties, Concentration",
-                prereqs: [
-                    { name: "Mole Concept", importance: "Critical", reason: "Molarity, Molality calculations." },
-                    { name: "States of Matter", importance: "Medium", reason: "Gas laws and vapor pressure." }
-                ]
-            },
-            {
-                name: "Electrochemistry",
-                desc: "Cells, Nernst Equation",
-                prereqs: [
-                    { name: "Redox Reactions", importance: "Critical", reason: "Balancing equations and oxidation states." },
-                    { name: "Equilibrium", importance: "High", reason: "Ionic equilibrium concepts used in Nernst equation." },
-                    { name: "Thermodynamics", importance: "Medium", reason: "Gibbs Free Energy." }
-                ]
-            },
-            {
-                name: "Chemical Kinetics",
-                desc: "Rate of reaction",
-                prereqs: [
-                    { name: "Equilibrium", importance: "High", reason: "Law of Mass Action." },
-                    { name: "Mole Concept", importance: "High", reason: "Concentration terms." }
-                ]
-            },
-            {
-                name: "Organic Chemistry",
-                desc: "The major chunk of Class 12",
-                prereqs: [
-                    { name: "GOC (General Organic Chem)", importance: "Critical", reason: "Inductive effect, Resonance, Hybridization are mandatory." },
-                    { name: "Hydrocarbons", importance: "Critical", reason: "Reaction mechanisms foundation." }
-                ]
-            },
-            {
-                name: "Inorganic (P, D, F Blocks)",
-                desc: "Periodic properties",
-                prereqs: [
-                    { name: "Chemical Bonding", importance: "Critical", reason: "Structures, Hybridization, Bond angles." },
-                    { name: "Periodic Table", importance: "Critical", reason: "Trends in atomic size, ionization energy." }
-                ]
-            }
-        ],
-        class11: [
-            { id: "c1", name: "Mole Concept", impact: 18 },
-            { id: "c2", name: "Structure of Atom", impact: 12 },
-            { id: "c3", name: "Periodic Classification", impact: 15 },
-            { id: "c4", name: "Chemical Bonding", impact: 25 },
-            { id: "c5", name: "Thermodynamics", impact: 8 },
-            { id: "c6", name: "Equilibrium", impact: 12 },
-            { id: "c7", name: "Redox Reactions", impact: 10 },
-            { id: "c8", name: "GOC (General Organic)", impact: 30 },
-            { id: "c9", name: "Hydrocarbons", impact: 20 }
-        ]
+        btnOn: 'bg-white text-teal-600 shadow-teal-200 shadow-md', btnOff: 'text-zinc-600 hover:bg-white/50',
+        gradient: 'bg-gradient-to-br from-teal-500 to-emerald-600',
+        icon: '🧪', cardAccent: '#0d9488'
     },
     maths: {
-        summary: "Calculus dominates Class 12 (approx 40-50%). It is built entirely on Class 11 Functions, Limits, and Trigonometry.",
-        dependencyData: [80, 15, 5],
-        chapters: [
-            {
-                name: "Relations & Functions",
-                desc: "Types of relations, Inverse functions",
-                prereqs: [
-                    { name: "Sets, Relations & Functions (11th)", importance: "Critical", reason: "Direct continuation of the topic." },
-                    { name: "Basic Inequalities", importance: "High", reason: "Finding domain and range." }
-                ]
-            },
-            {
-                name: "Calculus (Continuity, Differentiability)",
-                desc: "The start of Calculus",
-                prereqs: [
-                    { name: "Limits & Derivatives (11th)", importance: "Critical", reason: "Foundation of all calculus." },
-                    { name: "Trigonometry", importance: "Critical", reason: "Formulas used in simplification before differentiating." }
-                ]
-            },
-            {
-                name: "Integrals & Differential Equations",
-                desc: "Advanced Calculus",
-                prereqs: [
-                    { name: "Differentiation", importance: "Critical", reason: "Integration is reverse differentiation." },
-                    { name: "Trigonometric Formulas", importance: "Critical", reason: "Essential for solving integrals." },
-                    { name: "Coordinate Geometry", importance: "Medium", reason: "Area under curves requires graphing knowledge." }
-                ]
-            },
-            {
-                name: "Vectors & 3D Geometry",
-                desc: "Spatial geometry",
-                prereqs: [
-                    { name: "Coordinate Geometry (2D)", importance: "Medium", reason: "Analogy to 2D formulas." },
-                    { name: "Physics Vectors", importance: "High", reason: "Strong overlap helps understanding." }
-                ]
-            },
-            {
-                name: "Probability",
-                desc: "Bayes theorem, Distributions",
-                prereqs: [
-                    { name: "Permutations & Combinations", importance: "High", reason: "Counting principles are essential." },
-                    { name: "Probability (11th)", importance: "Medium", reason: "Basic axioms." }
-                ]
-            }
-        ],
-        class11: [
-            { id: "m1", name: "Sets, Relations, Functions", impact: 25 },
-            { id: "m2", name: "Trigonometry", impact: 20 },
-            { id: "m3", name: "Quadratic Equations", impact: 5 },
-            { id: "m4", name: "Permutations & Combinations", impact: 10 },
-            { id: "m5", name: "Binomial Theorem", impact: 5 },
-            { id: "m6", name: "Sequence & Series", impact: 5 },
-            { id: "m7", name: "Straight Lines & Conics", impact: 10 },
-            { id: "m8", name: "Limits & Derivatives", impact: 25 },
-            { id: "m9", name: "Statistics", impact: 2 }
-        ]
+        btnOn: 'bg-white text-rose-600 shadow-rose-200 shadow-md', btnOff: 'text-zinc-600 hover:bg-white/50',
+        gradient: 'bg-gradient-to-br from-rose-500 to-orange-500',
+        icon: '📐', cardAccent: '#e11d48'
     }
 };
 
-// --- GLOBAL STATE ---
-let currentSubject = 'physics';
-let currentSimSubject = 'physics';
-let dependencyChartInstance = null;
-let riskChartInstance = null;
-let selectedWeakTopics = new Set();
+// --- 3. DOM ELEMENTS ---
+const chapterListEl = document.getElementById('chapter-list');
+const detailPanel = document.getElementById('detail-panel');
+const mobileOverlay = document.getElementById('mobile-detail-overlay');
+const mobileContent = document.getElementById('mobile-detail-content');
+const searchBox = document.getElementById('searchBox');
 
-// --- INITIALIZATION ---
-document.addEventListener('DOMContentLoaded', () => {
-    renderSubjectData(currentSubject);
-    initSimCheckboxes(currentSimSubject);
-    initRiskChart();
-});
+const emptyState = document.getElementById('empty-state');
+const contentView = document.getElementById('content-view');
 
-// --- GEMINI HELPER FUNCTIONS ---
-
-async function callGemini(prompt) {
-    if (!apiKey) {
-        return "Error: API Key is missing.";
-    }
-
-    try {
-        const maxRetries = 3;
-        let delay = 1000;
-        
-        for (let i = 0; i < maxRetries; i++) {
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                });
-
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
-                const result = await response.json();
-                return result.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
-                
-            } catch (e) {
-                if (i === maxRetries - 1) throw e;
-                await new Promise(r => setTimeout(r, delay));
-                delay *= 2;
-            }
-        }
-    } catch (error) {
-        console.error("Gemini API Error:", error);
-        return "Sorry, I couldn't generate a response. Please try again later.";
-    }
+// --- 4. RENDER LOGIC ---
+function init() {
+    setSubject('physics');
+    renderOverviewChart();
 }
 
-function showModal(title, content) {
-    document.getElementById('modal-title').innerHTML = title;
-    document.getElementById('modal-content').innerHTML = content;
-    document.getElementById('ai-modal').classList.remove('hidden');
-}
+function setSubject(subj) {
+    currentSubject = subj;
 
-function closeModal() {
-    document.getElementById('ai-modal').classList.add('hidden');
-}
-
-function showLoading(context) {
-    return `
-        <div class="flex flex-col items-center justify-center py-12">
-            <div class="loader-ring mb-4"><div></div><div></div><div></div><div></div></div>
-            <p class="text-stone-500 font-medium animate-pulse">${context}</p>
-        </div>
-    `;
-}
-
-// --- NEW HELPER: Robust Markdown Table Converter ---
-function convertMarkdownToTable(text) {
-    // 1. Clean code blocks
-    let cleanText = text.replace(/```markdown/g, '').replace(/```html/g, '').replace(/```/g, '').trim();
-
-    // 2. Find the start of the table (looks for line starting with |)
-    const tableStartIndex = cleanText.indexOf('|');
-    if (tableStartIndex === -1) return text; // No table found
-
-    // Extract just the table part (in case there is intro text)
-    const tableText = cleanText.substring(tableStartIndex);
-    const rows = tableText.split('\n').filter(row => row.trim().startsWith('|'));
-
-    if (rows.length < 3) return text; // Not a valid table
-
-    // 3. Build HTML
-    let html = '<div class="overflow-x-auto"><table class="min-w-full divide-y divide-stone-200 border border-stone-200 mb-4">';
-    
-    // Header
-    const headers = rows[0].split('|').filter(cell => cell.trim() !== '');
-    html += '<thead class="bg-stone-100"><tr>';
-    headers.forEach(header => {
-        html += `<th class="px-3 py-2 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">${header.trim()}</th>`;
+    ['physics', 'chemistry', 'maths'].forEach(s => {
+        const btn = document.getElementById(`btn-${s}`);
+        btn.className = `px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${s === subj ? themes[s].btnOn : themes[s].btnOff}`;
     });
-    html += '</tr></thead><tbody class="bg-white divide-y divide-stone-200">';
 
-    // Body (Skip separator row |---|)
-    for (let i = 2; i < rows.length; i++) {
-        const cells = rows[i].split('|').filter(cell => cell.trim() !== '');
-        if (cells.length === 0) continue;
-        html += '<tr>';
-        cells.forEach(cell => {
-            html += `<td class="px-3 py-2 whitespace-normal text-sm text-stone-600 border-b border-stone-100">${cell.trim()}</td>`;
-        });
-        html += '</tr>';
-    }
-    html += '</tbody></table></div>';
+    document.body.className = `h-screen flex flex-col overflow-hidden text-zinc-800 relative theme-${subj}`;
+    renderChapterList();
 
-    // Preserve intro text if it exists
-    const intro = cleanText.substring(0, tableStartIndex).trim();
-    if (intro) {
-        return `<p class="mb-4 text-stone-700">${intro}</p>` + html;
-    }
-
-    return html;
+    emptyState.classList.remove('hidden');
+    contentView.classList.add('hidden');
+    currentChapterId = null;
 }
 
-function formatAIResponse(text) {
-    // 1. Convert any Markdown tables to HTML tables first
-    let processedText = convertMarkdownToTable(text);
-    
-    // 2. Simple Formatting for remaining markdown
-    return processedText
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-teal-800">$1</strong>') // Bold
-        .replace(/^\* (.*?)$/gm, '<li class="ml-4 mb-2">$1</li>') // List items
-        .replace(/\n\n/g, '<br><br>') // Paragraphs
-        .replace(/\n/g, '<br>'); // Line breaks
+function filterClass(cls) {
+    currentClassFilter = cls;
+    const activeClass = 'flex-1 py-2 rounded-full bg-zinc-800 text-white font-semibold transition-all shadow-md';
+    const inactiveClass = 'flex-1 py-2 rounded-full text-zinc-600 hover:bg-white/60 font-medium transition-all';
+
+    document.getElementById('filter-all').className = cls === 'all' ? activeClass : inactiveClass;
+    document.getElementById('filter-11').className = cls === 11 ? activeClass : inactiveClass;
+    document.getElementById('filter-12').className = cls === 12 ? activeClass : inactiveClass;
+
+    renderChapterList();
 }
 
-// Function to render math using KaTeX
-function renderMath(elementId) {
-    const element = document.getElementById(elementId);
-    if (window.renderMathInElement) {
-        renderMathInElement(element, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false},
-                {left: '\\[', right: '\\]', display: true}
-            ],
-            throwOnError: false
-        });
-    }
-}
+function renderChapterList() {
+    const list = syllabusDB[currentSubject];
+    const query = searchBox.value.toLowerCase();
 
-// --- AI FEATURES IMPLEMENTATION ---
+    chapterListEl.innerHTML = '';
 
-async function explainConnection(chapterName, prereqs) {
-    showModal(`<span class="text-2xl">✨</span> Connection Explained`, showLoading("Analyzing syllabus links..."));
-    
-    // UPDATED PROMPT
-    const prompt = `
-        I am a JEE student. Explain the conceptual connection between Class 12 topic "${chapterName}" and its Class 11 prerequisites: ${prereqs}.
-        
-        **Instructions:**
-        1. Keep it concise (under 150 words).
-        2. Highlight key terms with **bold**.
-        3. Use LaTeX delimiters $...$ for inline math.
-    `;
-    
-    const response = await callGemini(prompt);
-    
-    const modalContent = document.getElementById('modal-content');
-    modalContent.innerHTML = formatAIResponse(response);
-    renderMath('modal-content');
-}
+    const filtered = list.filter(ch => {
+        const matchesClass = currentClassFilter === 'all' || ch.class === currentClassFilter;
+        const matchesSearch = ch.title.toLowerCase().includes(query) || ch.desc.toLowerCase().includes(query);
+        return matchesClass && matchesSearch;
+    });
 
-async function generateRecoveryPlan() {
-    if (selectedWeakTopics.size === 0) {
-        showModal("Wait!", "Please select at least one weak topic in the simulator to generate a plan.");
+    if (filtered.length === 0) {
+        chapterListEl.innerHTML = `<div class="p-6 text-center text-zinc-400 text-sm font-medium bg-white/40 rounded-3xl mx-2 border border-white/50">No systems match your scan.</div>`;
         return;
     }
 
-    showModal(`<span class="text-2xl">✨</span> Recovery Plan`, showLoading("Designing your bridge course..."));
+    filtered.forEach(ch => {
+        const el = document.createElement('div');
+        const isActive = currentChapterId === ch.id;
 
-    // Gather topic names
-    const weakTopicNames = [];
-    syllabusData[currentSimSubject].class11.forEach(t => {
-        if (selectedWeakTopics.has(t.id)) weakTopicNames.push(t.name);
-    });
+        el.className = `chapter-card p-5 mb-3 bg-white/60 backdrop-blur-lg border border-white/50 cursor-pointer group ${isActive ? 'active' : ''}`;
+        el.onclick = () => selectChapter(ch.id);
 
-    // UPDATED PROMPT: Request Markdown Table (which we now convert perfectly)
-    const prompt = `
-        I am moving to Class 12. I am weak in these Class 11 ${currentSimSubject} topics: ${weakTopicNames.join(', ')}.
-        
-        Generate a structured "Bridge Course" plan (20 days).
-        
-        **CRITICAL INSTRUCTIONS:**
-        1. **Output a Markdown Table**.
-        2. Columns: **Days**, **Topic**, **Strategy**, **Math/Formula Focus**.
-        3. Use LaTeX $...$ for math.
-    `;
+        const dotColor = ch.class === 11 ? 'bg-zinc-300' : 'bg-zinc-800';
 
-    const response = await callGemini(prompt);
-    
-    const modalContent = document.getElementById('modal-content');
-    modalContent.innerHTML = formatAIResponse(response);
-    renderMath('modal-content');
-}
-
-// --- SECTION 1 LOGIC: SUBJECT EXPLORER ---
-
-function switchTab(subject) {
-    currentSubject = subject;
-    ['physics', 'chemistry', 'maths'].forEach(s => {
-        const btn = document.getElementById(`tab-${s}`);
-        if (s === subject) {
-            btn.className = "tab-active px-6 py-3 text-sm md:text-base transition-colors focus:outline-none";
-        } else {
-            btn.className = "tab-inactive px-6 py-3 text-sm md:text-base transition-colors focus:outline-none";
-        }
-    });
-    renderSubjectData(subject);
-}
-
-function renderSubjectData(subject) {
-    const data = syllabusData[subject];
-    document.getElementById('analyst-note').innerText = data.summary;
-    renderDependencyChart(data.dependencyData);
-
-    const listContainer = document.getElementById('chapter-list');
-    listContainer.innerHTML = '';
-
-    data.chapters.forEach((chapter, index) => {
-        const row = document.createElement('div');
-        row.className = "group cursor-pointer transition-colors hover:bg-stone-50";
-        row.onclick = (e) => {
-            if(!e.target.closest('button')) toggleRow(index);
-        };
-
-        // --- BUG FIX FOR ELECTROSTATICS BUTTON ---
-        // We must 'escape' the single quotes in names (e.g., "Newton's")
-        const safeChapterName = chapter.name.replace(/'/g, "\\'");
-        const safePrereqNames = chapter.prereqs.map(p => p.name).join(', ').replace(/'/g, "\\'");
-        // -----------------------------------------
-
-        row.innerHTML = `
-            <div class="px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h4 class="text-sm font-bold text-stone-800 group-hover:text-teal-700">${chapter.name}</h4>
-                        <p class="text-xs text-stone-500 mt-1">${chapter.desc}</p>
+        el.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[10px] font-bold uppercase tracking-widest ${ch.class === 11 ? 'text-zinc-400' : 'text-zinc-800'} bg-zinc-100 px-2 py-1 rounded-full">Class ${ch.class}</span>
+                        ${ch.prereqs.length > 0 ? `<div class="flex items-center gap-1 opacity-60"><div class="w-1.5 h-1.5 rounded-full ${dotColor}"></div><span class="text-[10px] text-zinc-400 font-medium">Linked</span></div>` : ''}
                     </div>
-                    <div class="transform transition-transform duration-200" id="icon-${index}">
-                        <svg class="w-5 h-5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                </div>
-                <div id="details-${index}" class="hidden mt-4 pl-4 border-l-2 border-teal-200 space-y-3">
-                    <div class="text-xs font-semibold text-stone-400 uppercase tracking-wide">Requires Class 11 Concepts:</div>
-                    ${chapter.prereqs.map(p => `
-                        <div class="bg-white p-3 rounded border border-stone-200 shadow-sm">
-                            <div class="flex justify-between items-start">
-                                <span class="font-medium text-stone-700 text-sm">${p.name}</span>
-                                <span class="text-[10px] px-1.5 py-0.5 rounded ${p.importance === 'Critical' ? 'bg-rose-100 text-rose-700' : p.importance === 'High' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'}">${p.importance}</span>
-                            </div>
-                            <p class="text-xs text-stone-500 mt-1">${p.reason}</p>
-                        </div>
-                    `).join('')}
-                    
-                    <div class="pt-2">
-                        <!-- Used safe variables here -->
-                        <button onclick="explainConnection('${safeChapterName}', '${safePrereqNames}')" class="text-xs flex items-center gap-1 text-teal-600 font-medium hover:text-teal-800 transition">
-                            <span>✨</span> Explain conceptual link with AI
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        listContainer.appendChild(row);
+                    <h3 class="font-bold text-zinc-800 text-base leading-tight group-hover:text-zinc-900 transition-colors mb-1">${ch.title}</h3>
+                    <p class="text-xs text-zinc-500 line-clamp-2 leading-relaxed font-medium">${ch.desc}</p>
+                `;
+        chapterListEl.appendChild(el);
     });
 }
 
-function toggleRow(index) {
-    const details = document.getElementById(`details-${index}`);
-    const icon = document.getElementById(`icon-${index}`);
-    
-    if (details.classList.contains('hidden')) {
-        details.classList.remove('hidden');
-        details.classList.add('animate-fade-in');
-        icon.classList.add('rotate-180');
+function selectChapter(id) {
+    currentChapterId = id;
+    renderChapterList();
+
+    let chapter = null;
+    let subject = '';
+
+    for (const s in syllabusDB) {
+        const found = syllabusDB[s].find(c => c.id === id);
+        if (found) { chapter = found; subject = s; break; }
+    }
+    if (!chapter) return;
+
+    emptyState.classList.add('hidden');
+    contentView.classList.remove('hidden');
+
+    document.getElementById('detail-title').innerText = chapter.title;
+    document.getElementById('detail-tagline').innerText = chapter.desc;
+    document.getElementById('detail-class-badge').innerText = `Class ${chapter.class}`;
+    document.getElementById('detail-subject-badge').innerText = subject.charAt(0).toUpperCase() + subject.slice(1);
+
+    const hero = document.getElementById('hero-section');
+    hero.className = `relative p-10 md:p-14 overflow-hidden rounded-b-[3rem] transition-colors duration-700 shadow-md ${themes[subject].gradient}`;
+    document.getElementById('hero-icon').innerText = themes[subject].icon;
+
+    document.getElementById('significance-text').innerText = chapter.significance;
+
+    const topicList = document.getElementById('topic-list');
+    topicList.innerHTML = chapter.topics.map(t =>
+        `<li class="flex items-center gap-3 p-3 rounded-2xl bg-zinc-50 border border-zinc-100 hover:bg-zinc-100 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-zinc-300"></div>
+                    <span class="text-sm font-semibold text-zinc-700">${t}</span>
+                </li>`
+    ).join('');
+
+    const prereqContainer = document.getElementById('prereq-container');
+    if (chapter.prereqs.length === 0) {
+        prereqContainer.innerHTML = `
+                    <div class="p-6 rounded-2xl bg-zinc-50 border border-zinc-100 text-center">
+                        <span class="text-sm font-medium text-zinc-400">Independent Concept. Ready to start!</span>
+                    </div>`;
     } else {
-        details.classList.add('hidden');
-        icon.classList.remove('rotate-180');
+        prereqContainer.innerHTML = chapter.prereqs.map(pid => {
+            const pChapter = syllabusDB[subject].find(c => c.id === pid);
+            if (!pChapter) return '';
+            return `
+                        <div onclick="selectChapter('${pid}')" class="group flex items-center justify-between p-4 rounded-2xl bg-zinc-50 border border-zinc-100 hover:bg-white hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-200/50 cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-sm font-bold text-zinc-500 shadow-sm group-hover:text-indigo-600 transition-colors">
+                                    ${pChapter.class}
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-zinc-800">${pChapter.title}</h4>
+                                    <p class="text-[11px] text-zinc-500 font-medium mt-0.5">Required Knowledge</p>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-zinc-300 group-hover:text-indigo-500 transition-colors transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    `;
+        }).join('');
+    }
+
+    const unlocksContainer = document.getElementById('unlocks-container');
+    const unlocks = syllabusDB[subject].filter(c => c.prereqs.includes(id));
+
+    if (unlocks.length === 0) {
+        unlocksContainer.innerHTML = `
+                    <div class="p-6 rounded-2xl bg-zinc-50 border border-zinc-100 text-center">
+                        <span class="text-sm font-medium text-zinc-400">Terminal node or indirectly applied.</span>
+                    </div>`;
+    } else {
+        unlocksContainer.innerHTML = unlocks.map(uChapter => `
+                     <div onclick="selectChapter('${uChapter.id}')" class="group flex items-center justify-between p-4 rounded-2xl bg-teal-50/50 border border-teal-100/50 hover:bg-teal-50 hover:border-teal-200 hover:shadow-lg hover:shadow-teal-100/50 cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-white border border-teal-100 flex items-center justify-center text-sm shadow-sm group-hover:scale-110 transition-transform">
+                                    🔓
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-zinc-800 group-hover:text-teal-800 transition-colors">${uChapter.title}</h4>
+                                    <p class="text-[11px] text-teal-600/70 font-medium mt-0.5">Unlocks in Class ${uChapter.class}</p>
+                                </div>
+                            </div>
+                            <svg class="w-5 h-5 text-teal-300 group-hover:text-teal-600 transition-colors transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                `).join('');
+    }
+
+    detailPanel.scrollTop = 0;
+    if (window.innerWidth < 768) mobileContent.scrollTop = 0;
+
+    if (window.innerWidth < 768) {
+        mobileContent.innerHTML = '';
+        const clone = contentView.cloneNode(true);
+        clone.id = 'cloned-content-view';
+        mobileContent.appendChild(clone);
+        mobileOverlay.classList.remove('translate-x-full');
     }
 }
 
-function renderDependencyChart(dataValues) {
-    const ctx = document.getElementById('dependencyChart').getContext('2d');
-    if (dependencyChartInstance) dependencyChartInstance.destroy();
+function closeMobileDetail() {
+    mobileOverlay.classList.add('translate-x-full');
+    setTimeout(() => { mobileContent.innerHTML = ''; }, 500);
+}
 
-    dependencyChartInstance = new Chart(ctx, {
-        type: 'doughnut',
+// --- 5. OVERVIEW CHART ---
+function renderOverviewChart() {
+    const ctx = document.getElementById('overviewChart').getContext('2d');
+
+    const counts = { physics: 0, chemistry: 0, maths: 0 };
+    const links = { physics: 0, chemistry: 0, maths: 0 };
+
+    ['physics', 'chemistry', 'maths'].forEach(s => {
+        counts[s] = syllabusDB[s].length;
+        links[s] = syllabusDB[s].reduce((acc, c) => acc + c.prereqs.length, 0);
+    });
+
+    Chart.defaults.font.family = "'Inter', sans-serif";
+    Chart.defaults.color = '#a1a1aa';
+
+    new Chart(ctx, {
+        type: 'bar',
         data: {
-            labels: ['High Dependency', 'Medium Dependency', 'Independent'],
-            datasets: [{
-                data: dataValues,
-                backgroundColor: ['#ef4444', '#f59e0b', '#10b981'],
-                borderWidth: 0,
-                hoverOffset: 4
-            }]
+            labels: ['Physics', 'Chemistry', 'Maths'],
+            datasets: [
+                {
+                    label: 'Total Chapters',
+                    data: [counts.physics, counts.chemistry, counts.maths],
+                    backgroundColor: ['rgba(99, 102, 241, 0.8)', 'rgba(20, 184, 166, 0.8)', 'rgba(244, 63, 94, 0.8)'],
+                    borderRadius: 8,
+                    borderSkipped: false,
+                    barPercentage: 0.6
+                },
+                {
+                    label: 'Inter-connections',
+                    data: [links.physics, links.chemistry, links.maths],
+                    backgroundColor: ['rgba(99, 102, 241, 0.2)', 'rgba(20, 184, 166, 0.2)', 'rgba(244, 63, 94, 0.2)'],
+                    borderRadius: 8,
+                    borderSkipped: false,
+                    barPercentage: 0.6
+                }
+            ]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-                legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, font: { family: "'Inter', sans-serif", size: 12 } } },
-                tooltip: { backgroundColor: '#292524', titleFont: { family: 'Inter' }, bodyFont: { family: 'Inter' }, padding: 10 }
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(0,0,0,0.03)', drawBorder: false },
+                    border: { display: false }
+                },
+                x: {
+                    grid: { display: false },
+                    border: { display: false }
+                }
             },
-            cutout: '65%'
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { usePointStyle: true, padding: 20, font: { weight: '500' } }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#18181b',
+                    bodyColor: '#52525b',
+                    borderColor: 'rgba(0,0,0,0.05)',
+                    borderWidth: 1,
+                    padding: 12,
+                    boxPadding: 6,
+                    usePointStyle: true,
+                    titleFont: { size: 14, family: "'Plus Jakarta Sans', sans-serif" }
+                }
+            },
+            interaction: { mode: 'index', intersect: false }
         }
     });
 }
 
-// --- SECTION 2 LOGIC: SIMULATOR ---
-
-function setSimSubject(subject) {
-    currentSimSubject = subject;
-    document.getElementById('sim-subject-title').innerText = `Select Weak ${subject.charAt(0).toUpperCase() + subject.slice(1)} Topics`;
-    initSimCheckboxes(subject);
-    selectedWeakTopics.clear();
-    calculateTotalRisk();
-}
-
-function initSimCheckboxes(subject) {
-    const container = document.getElementById('sim-checkboxes');
-    container.innerHTML = '';
-    const topics = syllabusData[subject].class11;
-    
-    topics.forEach(topic => {
-        const div = document.createElement('div');
-        div.className = "flex items-center p-2 rounded hover:bg-stone-700 transition";
-        const isChecked = selectedWeakTopics.has(topic.id) ? 'checked' : '';
-        div.innerHTML = `
-            <input type="checkbox" id="${topic.id}" value="${topic.impact}" class="w-4 h-4 text-teal-600 rounded border-stone-500 focus:ring-teal-500 bg-stone-700" onchange="updateRisk('${topic.id}')" ${isChecked}>
-            <label for="${topic.id}" class="ml-3 text-sm font-medium text-stone-300 cursor-pointer select-none flex-grow">${topic.name}</label>
-        `;
-        container.appendChild(div);
-    });
-}
-
-function updateRisk(topicId) {
-    if (selectedWeakTopics.has(topicId)) selectedWeakTopics.delete(topicId);
-    else selectedWeakTopics.add(topicId);
-    calculateTotalRisk();
-}
-
-function calculateTotalRisk() {
-    const currentTopics = syllabusData[currentSimSubject].class11;
-    let currentSubjectRisk = 0;
-    currentTopics.forEach(t => {
-        if (selectedWeakTopics.has(t.id)) currentSubjectRisk += t.impact;
-    });
-    let riskPercentage = Math.min(100, currentSubjectRisk);
-    updateRiskVisuals(riskPercentage);
-}
-
-function updateRiskVisuals(percentage) {
-    const scoreEl = document.getElementById('risk-score');
-    scoreEl.innerText = `${percentage}%`;
-    
-    if (percentage < 30) scoreEl.className = "text-4xl font-bold text-emerald-400 transition-colors duration-500";
-    else if (percentage < 60) scoreEl.className = "text-4xl font-bold text-yellow-400 transition-colors duration-500";
-    else scoreEl.className = "text-4xl font-bold text-rose-500 transition-colors duration-500";
-
-    riskChartInstance.data.datasets[0].data = [percentage, 100 - percentage];
-    riskChartInstance.data.datasets[0].backgroundColor = [
-        percentage > 60 ? '#f43f5e' : (percentage > 30 ? '#facc15' : '#34d399'), 
-        '#44403c'
-    ];
-    riskChartInstance.update();
-}
-
-function initRiskChart() {
-    const ctx = document.getElementById('riskChart').getContext('2d');
-    riskChartInstance = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['At Risk', 'Safe'],
-            datasets: [{
-                data: [0, 100],
-                backgroundColor: ['#34d399', '#44403c'],
-                borderWidth: 0,
-                circumference: 180,
-                rotation: 270,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { enabled: false } },
-            cutout: '80%'
-        }
-    });
-}
-
-function resetSimulator() {
-    selectedWeakTopics.clear();
-    document.querySelectorAll('#sim-checkboxes input').forEach(cb => cb.checked = false);
-    calculateTotalRisk();
-}
+// --- INIT ---
+searchBox.addEventListener('input', renderChapterList);
+init();

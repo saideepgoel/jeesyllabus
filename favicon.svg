@@ -1,24 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="48" fill="#0f766e" />
-  
-  <path d="M25 35 
-           L48 45 
-           L48 75 
-           L25 65 
-           Z" fill="#ffffff" opacity="0.9"/>
-  <path d="M52 45 
-           L75 35 
-           L75 65 
-           L52 75 
-           Z" fill="#e2e8f0" opacity="0.9"/>
-           
-  <path d="M50 15 
-           L55 28 
-           L68 33 
-           L55 38 
-           L50 51 
-           L45 38 
-           L32 33 
-           L45 28 
-           Z" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
+    <!-- Group rotated to give the planet its tilt -->
+    <g transform="rotate(-20 50 50)">
+        
+        <!-- Back half of the ring -->
+        <path d="M 8 50 A 42 14 0 0 1 92 50" fill="none" stroke="#DDC2A3" stroke-width="8" stroke-linecap="round" />
+        
+        <!-- Planet Body -->
+        <circle cx="50" cy="50" r="24" fill="#E8A365" />
+        
+        <!-- Planet Surface Bands -->
+        <path d="M 28 40 Q 50 48 72 40 L 74 46 Q 50 54 26 46 Z" fill="#C77D43" />
+        <path d="M 32 58 Q 50 64 68 58 L 65 62 Q 50 68 35 62 Z" fill="#C77D43" opacity="0.8" />
+        
+        <!-- Shadow on the bottom of the planet -->
+        <path d="M 26 50 A 24 24 0 0 0 74 50 A 24 20 0 0 1 26 50" fill="#000000" opacity="0.15" />
+
+        <!-- Front half of the ring -->
+        <path d="M 92 50 A 42 14 0 0 1 8 50" fill="none" stroke="#F5D7B6" stroke-width="8" stroke-linecap="round" />
+        
+        <!-- Inner ring bright highlight -->
+        <path d="M 88 50 A 38 10 0 0 1 12 50" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6" />
+        
+    </g>
 </svg>
