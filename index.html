@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEE Syllabus — The Chapter Map</title>
+<meta name="description" content="An interactive map of the JEE Physics, Chemistry and Maths syllabus — every chapter, what to master before it, and what it unlocks next.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <svg class="brand-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="15" cy="15" r="2.6" fill="currentColor"/>
+      <ellipse cx="15" cy="15" rx="13" ry="5.4" stroke="currentColor" stroke-width="1.4"/>
+      <ellipse cx="15" cy="15" rx="13" ry="5.4" stroke="currentColor" stroke-width="1.4" transform="rotate(60 15 15)"/>
+      <ellipse cx="15" cy="15" rx="13" ry="5.4" stroke="currentColor" stroke-width="1.4" transform="rotate(120 15 15)"/>
+    </svg>
+    <span>JEE&nbsp;Syllabus</span>
+  </div>
+  <p class="topbar__eyebrow">The Chapter Map — Physics · Chemistry · Maths</p>
+</header>
+
+<main>
+
+  <section class="hero" id="hero">
+    <p class="hero__kicker">01 — Two years, three subjects, one dependency graph</p>
+    <h1 class="hero__title">Every chapter has a<br><em>before</em> and an <em>after</em>.</h1>
+    <p class="hero__sub">Nothing in the JEE syllabus stands alone. Pick a subject, open a chapter, and see exactly what you need to have mastered first — and what it unlocks once you have.</p>
+  </section>
+
+  <nav class="subject-tabs" role="tablist" aria-label="Choose subject">
+    <button class="subject-tab" data-subject="physics" role="tab" aria-selected="false">
+      <span class="subject-tab__glyph" aria-hidden="true">⚡</span>Physics
+    </button>
+    <button class="subject-tab" data-subject="chemistry" role="tab" aria-selected="false">
+      <span class="subject-tab__glyph" aria-hidden="true">⚗</span>Chemistry
+    </button>
+    <button class="subject-tab" data-subject="maths" role="tab" aria-selected="false">
+      <span class="subject-tab__glyph" aria-hidden="true">∑</span>Maths
+    </button>
+  </nav>
+
+  <section class="board" id="board">
+
+    <div class="board__controls">
+      <div class="class-toggle" role="tablist" aria-label="Choose class">
+        <button class="class-toggle__btn" data-class="11" role="tab" aria-selected="false">Class 11</button>
+        <button class="class-toggle__btn" data-class="12" role="tab" aria-selected="false">Class 12</button>
+      </div>
+      <p class="board__count" id="board-count"></p>
+    </div>
+
+    <div class="chapter-grid" id="chapter-grid"></div>
+
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <p>Built from the standard JEE Main / Advanced (NCERT-aligned) syllabus. For your final exam-day reference, always cross-check against the current official JEE syllabus PDF.</p>
+</footer>
+
+<!-- Detail panel -->
+<div class="scrim" id="scrim"></div>
+<aside class="detail" id="detail" aria-hidden="true">
+  <div class="detail__inner">
+    <button class="detail__back" id="detail-back">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3.5 5 9l6 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to chapters
+    </button>
+
+    <div class="detail__head">
+      <span class="detail__chip" id="detail-classchip">12</span>
+      <span class="detail__subject" id="detail-subject">Chemistry</span>
+    </div>
+    <h2 class="detail__title" id="detail-title">Chapter title</h2>
+    <p class="detail__tagline" id="detail-tagline">Chapter tagline goes here.</p>
+
+    <section class="detail__section" id="detail-prereq-section">
+      <h3 class="detail__heading"><span class="detail__heading-icon detail__heading-icon--prereq">‹</span>Prerequisites <span class="detail__heading-sub">— master these first</span></h3>
+      <div class="link-list" id="detail-prereq-list"></div>
+    </section>
+
+    <section class="detail__section">
+      <div class="detail__heading-row">
+        <h3 class="detail__heading"><span class="detail__heading-icon detail__heading-icon--topics">≡</span>What's inside</h3>
+        <div class="tier-select-wrap">
+          <select class="tier-select" id="tier-select" aria-label="Syllabus level">
+            <option value="ncert">NCERT</option>
+            <option value="main">JEE Main</option>
+            <option value="advanced">JEE Advanced</option>
+          </select>
+          <svg class="tier-select-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <p class="tier-note" id="tier-note"></p>
+      <ul class="topic-list" id="detail-topic-list"></ul>
+    </section>
+
+    <section class="detail__section" id="detail-next-section">
+      <h3 class="detail__heading"><span class="detail__heading-icon detail__heading-icon--next">›</span>Next steps <span class="detail__heading-sub">— chapters that rely on this</span></h3>
+      <div class="link-list" id="detail-next-list"></div>
+    </section>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
