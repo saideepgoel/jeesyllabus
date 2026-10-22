@@ -36,9 +36,9 @@
   <section class="view-home">
 
     <div class="wrap hero">
-      <p class="hero__kicker">Physics &middot; Chemistry &middot; Mathematics</p>
+      <p class="hero__kicker">Physics &middot; Chemistry &middot; Mathematics &middot; CBSE English &amp; Physical Education</p>
       <h1 class="hero__title">Every chapter in the JEE syllabus,<br>and how it connects to the next one.</h1>
-      <p class="hero__sub">Built from the JEE Main 2026 &amp; JEE Advanced 2026 syllabi, the CBSE 2026&ndash;27 curriculum and the NCERT textbooks &mdash; merged into one map, chapter by chapter. Open any chapter to see exactly what you need to have mastered first, what it unlocks later, and every topic inside it.</p>
+      <p class="hero__sub">Built from a curated CBSE 2026&ndash;27 / JEE Main 2026 / JEE Advanced 2026 crosswalk for Physics, Chemistry and Maths, plus the CBSE Class XII English Core and Physical Education syllabi. Open any chapter to see every topic, the official scope side by side, what to master first and what it unlocks later.</p>
     </div>
 
     <div class="wrap controls">
@@ -55,10 +55,29 @@
           <svg class="subject-btn__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h11l-5.2 6.8L15.4 17H4M4 3l4.6 6.8L4 17"/></svg>
           Maths
         </button>
+        <div class="cbse-menu" id="cbseMenu">
+          <button class="subject-btn subject-btn--menu" id="cbseBtn" type="button" data-group="cbse" aria-haspopup="menu" aria-expanded="false" aria-controls="cbseDropdown">
+            <svg class="subject-btn__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5C5.2 3.6 7.6 3.6 10 5c2.4-1.4 4.8-1.4 7-.5v11c-2.2-.9-4.6-.9-7 .5-2.4-1.4-4.8-1.4-7-.5v-11ZM10 5v11"/></svg>
+            <span id="cbseBtnLabel">CBSE</span>
+            <svg class="subject-btn__caret" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
+          </button>
+          <div class="cbse-dropdown" id="cbseDropdown" role="menu" aria-label="CBSE subjects">
+            <div class="cbse-dropdown__card">
+              <button class="cbse-item" role="menuitem" type="button" data-subject="english">
+                <span class="cbse-item__title">English Core (301)</span>
+                <span class="cbse-item__sub">Class XII &middot; 80 + 20 marks</span>
+              </button>
+              <button class="cbse-item" role="menuitem" type="button" data-subject="pe">
+                <span class="cbse-item__title">Physical Education (048)</span>
+                <span class="cbse-item__sub">Class XII &middot; 70 + 30 marks</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </nav>
 
       <div class="controls__right">
-        <div class="class-toggle" role="tablist" aria-label="Class">
+        <div class="class-toggle" id="classToggle" role="tablist" aria-label="Class">
           <button class="class-btn" data-cls="11" role="tab">Class 11</button>
           <button class="class-btn" data-cls="12" role="tab">Class 12</button>
         </div>
@@ -105,13 +124,15 @@
       <div class="legend-item"><dt><span class="tag tag--old">Old NCERT</span></dt><dd>Dropped from the current NCERT book entirely, but still on the JEE Advanced syllabus.</dd></div>
       <div class="legend-item"><dt><span class="tag tag--jmain">JEE Main</span></dt><dd>Explicitly listed in the JEE Main 2026 syllabus.</dd></div>
       <div class="legend-item"><dt><span class="tag tag--jadv">JEE Advanced</span></dt><dd>Explicitly listed in the JEE Advanced 2026 syllabus.</dd></div>
+      <div class="legend-item"><dt><span class="tag tag--cbse">CBSE 2026&ndash;27</span></dt><dd>Class XII English Core and Physical Education board syllabus (no JEE mapping).</dd></div>
     </dl>
+    <p class="legend-note">JEE syllabi are not officially split into Class XI and XII &mdash; the labels here are common teaching-sequence mappings, and chapters marked <b>XI&ndash;XII</b> straddle both years. This site is a curated crosswalk, not a verbatim copy of the official PDFs: where wording matters, check the official syllabus.</p>
   </div>
 </div>
 
 <footer class="site-foot">
   <div class="wrap site-foot__row">
-    <p>Sources: JEE Advanced 2026 syllabus &middot; JEE Main 2026 syllabus &middot; CBSE Physics/Chemistry/Maths curriculum 2026&ndash;27 &middot; NCERT textbooks.</p>
+    <p>Sources: curated PCM bifurcation (CBSE 2026&ndash;27 / JEE 2026) &middot; CBSE Class XII English Core &amp; Physical Education syllabus 2026&ndash;27 &middot; official JEE Main &amp; Advanced syllabi.</p>
   </div>
 </footer>
 

@@ -10,10 +10,23 @@
     "cbse-formative": { cls: "tag--cbsef", label: "CBSE \u00b7 formative" },
     "old-ncert":      { cls: "tag--old",   label: "Old NCERT" },
     "jee-main":       { cls: "tag--jmain", label: "JEE Main" },
-    "jee-adv":        { cls: "tag--jadv",  label: "JEE Advanced" }
+    "jee-adv":        { cls: "tag--jadv",  label: "JEE Advanced" },
+    "cbse-board":     { cls: "tag--cbse",  label: "CBSE 2026\u201327" }
   };
 
-  var SUBJECT_LABEL = { physics: "Physics", chemistry: "Chemistry", maths: "Mathematics" };
+  var SUBJECT_LABEL = {
+    physics: "Physics", chemistry: "Chemistry", maths: "Mathematics",
+    english: "English Core (301)", pe: "Physical Education (048)"
+  };
+  var CBSE_SUBJECTS = ["english", "pe"];
+  var CBSE_SHORT = { english: "English", pe: "PE" };
+  function isCbse(subject){ return CBSE_SUBJECTS.indexOf(subject) !== -1; }
+  function chipNum(c){ return c.label ? c.label : c.cls + "." + c.num; }
+  var SCOPE_ROWS = [
+    { key: "cbse", filter: "ncert",    label: "CBSE 2026\u201327" },
+    { key: "main", filter: "jee-main", label: "JEE Main 2026" },
+    { key: "adv",  filter: "jee-adv",  label: "JEE Advanced 2026" }
+  ];
 
   var DEFAULT_TITLE = "JEE Syllabus Map \u2014 Physics, Chemistry & Maths, chapter by chapter";
 
@@ -31,7 +44,8 @@
     cls: "11",
     query: "",
     openChapterId: null,
-    topicFilter: "all"
+    topicFilter: "all",
+    lastPcmCls: "11"
   };
 
   // ---------- elements ----------
@@ -40,7 +54,12 @@
     count: document.getElementById("chapterCount"),
     total: document.getElementById("totalChapters"),
     search: document.getElementById("searchInput"),
-    subjectBtns: Array.prototype.slice.call(document.querySelectorAll(".subject-btn")),
+    subjectBtns: Array.prototype.slice.call(document.querySelectorAll(".subject-btn[data-subject]")),
+    cbseMenu: document.getElementById("cbseMenu"),
+    cbseBtn: document.getElementById("cbseBtn"),
+    cbseBtnLabel: document.getElementById("cbseBtnLabel"),
+    cbseItems: Array.prototype.slice.call(document.querySelectorAll(".cbse-item")),
+    classToggle: document.getElementById("classToggle"),
     classBtns: Array.prototype.slice.call(document.querySelectorAll(".class-btn")),
     drawer: document.getElementById("drawer"),
     drawerContent: document.getElementById("drawerContent"),
@@ -90,7 +109,25 @@
     el.classBtns.forEach(function(btn){
       btn.classList.toggle("is-active", btn.dataset.cls === state.cls);
     });
+    var cbse = isCbse(state.subject);
+    el.cbseBtn.classList.toggle("is-active", cbse);
+    el.cbseBtnLabel.textContent = cbse ? "CBSE \u00b7 " + CBSE_SHORT[state.subject] : "CBSE";
+    el.cbseItems.forEach(function(it){ it.classList.toggle("is-active", it.dataset.subject === state.subject); });
+    // CBSE English / PE exist for Class XII only, so the class toggle has nothing to choose
+    el.classToggle.classList.toggle("is-hidden", cbse);
     if(!state.openChapterId) setAccent(state.subject);
+  }
+
+  function setSubject(subject){
+    if(isCbse(subject)){
+      if(!isCbse(state.subject)) state.lastPcmCls = state.cls;
+      state.subject = subject;
+      state.cls = "12";
+    } else {
+      state.subject = subject;
+      state.cls = state.lastPcmCls || "11";
+    }
+    renderControls(); renderGrid();
   }
 
   // ---------- render: grid ----------
@@ -101,18 +138,20 @@
     if(list.length === 0){
       var msg = state.query.trim()
         ? 'No chapters match "' + escapeHtml(state.query) + '".'
-        : "No chapters found for this class yet.";
+        : "No chapters found here yet.";
       el.grid.innerHTML = '<div class="empty-state">' + msg + '</div>';
       return;
     }
 
     el.grid.innerHTML = list.map(function(c){
       var linked = (c.prereq.length + c.unlocks.length) > 0;
-      var mainTags = c.tags.slice(0, 3).map(tagPill).join(" ");
+      var mainTags = c.tags.slice(0, 3).map(tagPill).join(" ") +
+        (c.marks ? ' <span class="tag tag--marks">' + escapeHtml(c.marks) + '</span>' : '') +
+        (c.span ? ' <span class="tag tag--span">' + c.span + '</span>' : '');
       return (
         '<button class="chapter-card' + (c.id === state.openChapterId ? " is-active" : "") + '" data-id="' + c.id + '">' +
           '<div class="chapter-card__top">' +
-            '<span class="chapter-card__num">' + c.cls + '.' + c.num + '</span>' +
+            '<span class="chapter-card__num">' + chipNum(c) + '</span>' +
             (linked ? '<span class="chapter-card__linked">LINKED</span>' : '') +
           '</div>' +
           '<h3 class="chapter-card__title">' + escapeHtml(c.title) + '</h3>' +
@@ -137,7 +176,7 @@
       return (
         '<li>' +
           '<button class="link-chip" data-id="' + c.id + '">' +
-            '<span class="link-chip__num">' + c.cls + '.' + c.num + '</span>' +
+            '<span class="link-chip__num">' + chipNum(c) + '</span>' +
             '<span>' +
               '<span class="link-chip__title">' + escapeHtml(c.title) + '</span>' +
               '<span class="link-chip__sub">' + SUBJECT_LABEL[c.subject] + ' &middot; Class ' + c.cls + '</span>' +
@@ -186,14 +225,13 @@
         return {
           mode: "list",
           items: c.topics,
-          note: "Formative only in the CBSE 2026\u201327 syllabus \u2014 not asked in the board exam, but still fair game for JEE."
+          note: "CBSE formative-only: curriculum-present but not summatively assessed (not the same as \u201cnot in CBSE\u201d)."
         };
       }
       return {
         mode: "message",
-        message: "Not in the CBSE 2026\u201327 syllabus." + (c.tags.indexOf("old-ncert") !== -1
-          ? " It was a full chapter in the pre-rationalisation NCERT textbook, and JEE Advanced still expects it."
-          : "")
+        message: (c.scope && c.scope.cbse) ? c.scope.cbse
+          : "Not a standalone summatively assessed chapter in CBSE 2026\u201327."
       };
     }
 
@@ -208,7 +246,12 @@
       };
     }
     var niceName = filterKey === "jee-main" ? "JEE Main" : "JEE Advanced";
-    return { mode: "message", message: "Not on the " + niceName + " syllabus for this chapter." };
+    var scopeKey = filterKey === "jee-main" ? "main" : "adv";
+    return {
+      mode: "message",
+      message: (c.scope && c.scope[scopeKey]) ? c.scope[scopeKey]
+        : "Not on the " + niceName + " syllabus for this chapter."
+    };
   }
 
   function renderTopicsPanelInner(c){
@@ -229,6 +272,14 @@
           : '<p class="topics-message">No topics tagged for this filter.</p>');
     }
 
+    if(isCbse(c.subject)){
+      return (
+        (c.note ? '<p class="topics-note">' + escapeHtml(c.note) + '</p>' : '') +
+        '<p class="topics-panel__hint">' + c.topics.length + ' topics' + (c.marks ? ' \u00b7 ' + escapeHtml(c.marks) : '') + '</p>' +
+        bodyHtml
+      );
+    }
+
     return (
       '<div class="topics-filter-row">' + pillsHtml + '</div>' +
       '<p class="topics-panel__hint">' +
@@ -241,13 +292,96 @@
   function renderDrawerContent(c){
     setAccent(c.subject);
     state.topicFilter = "all";
-    var tagsHtml = c.tags.map(tagPill).join(" ");
+    var tagsHtml = c.tags.map(tagPill).join(" ") +
+      (c.marks ? ' <span class="tag tag--marks">' + escapeHtml(c.marks) + '</span>' : '') +
+      (c.span ? ' <span class="tag tag--span">' + c.span + '</span>' : '');
+    var cbse = isCbse(c.subject);
+    var hasLinks = (c.prereq.length + c.unlocks.length) > 0;
+
+    var scopeHtml = "";
+    if(c.scope){
+      scopeHtml =
+        '<div class="scope-panel">' +
+          '<h3>Official scope, side by side</h3>' +
+          '<p class="scope-panel__hint">Wording and depth can differ between the three \u2014 this is the crosswalk text for this chapter.</p>' +
+          SCOPE_ROWS.map(function(r){
+            return '<div class="scope-row" data-scope="' + r.filter + '">' +
+              '<p class="scope-row__label">' + r.label + '</p>' +
+              '<p class="scope-row__text">' + escapeHtml(c.scope[r.key]) + '</p></div>';
+          }).join("") +
+        '</div>';
+    }
+
+    var templatesHtml = "";
+    if(c.templates){
+      templatesHtml =
+        '<div class="tpl-panel">' +
+          '<div class="tpl-panel__head">' +
+            '<div><h3>Writing templates</h3>' +
+            '<p class="tpl-panel__hint">Open a format to see its layout. Fill the blanks and stay inside the word limit.</p></div>' +
+            (c.pdf ? '<div class="tpl-actions">' +
+              '<a class="embed-btn" href="' + escapeHtml(c.pdf.file) + '" target="_blank" rel="noopener">Open PDF</a>' +
+              '<a class="embed-btn embed-btn--ghost" href="' + escapeHtml(c.pdf.file) + '" download>Download</a>' +
+            '</div>' : '') +
+          '</div>' +
+          '<div class="tpl-toolbar">' +
+            '<button type="button" class="tpl-toggle" data-tpl="expand">Expand all</button>' +
+            '<button type="button" class="tpl-toggle" data-tpl="collapse">Collapse all</button>' +
+            (c.pdf ? '<span class="tpl-source">Source: ' + escapeHtml(c.pdf.title) + ' \u00b7 ' + escapeHtml(c.pdf.meta || "") + '</span>' : '') +
+          '</div>' +
+          c.templates.map(function(g){
+            return '<section class="tpl-group">' +
+              '<div class="tpl-group__head"><h4>' + escapeHtml(g.group) + '</h4>' +
+              (g.note ? '<span class="tpl-group__note">' + escapeHtml(g.note) + '</span>' : '') + '</div>' +
+              g.items.map(function(it){
+                return '<details class="tpl">' +
+                  '<summary><span class="tpl__title">' + escapeHtml(it.title) + '</span>' +
+                  '<span class="tpl__tag">' + escapeHtml(it.tag || "") + '</span></summary>' +
+                  '<div class="tpl__body">' +
+                    (function(){
+                      var linesHtml = it.lines.map(function(l){
+                        if(l === "") return '<div class="tpl-line tpl-line--gap"></div>';
+                        if(l.charAt(0) === "~") return '<div class="tpl-deco">' + escapeHtml(l.slice(1)) + '</div>';   // decorative, not copied
+                        var centred = l.charAt(0) === "^";
+                        return '<div class="tpl-line' + (centred ? ' tpl-line--c' : '') + '">' + escapeHtml(centred ? l.slice(1) : l) + '</div>';
+                      }).join("");
+                      return '<div class="tpl-paper' + (it.boxed ? ' tpl-paper--boxed' : '') + '">' +
+                        (it.boxed ? '<div class="tpl-box tpl-box--' + it.boxed + '">' + linesHtml + '</div>' : linesHtml) +
+                      '</div>';
+                    })() +
+                    '<button type="button" class="tpl-copy">Copy template</button>' +
+                  '</div>' +
+                '</details>';
+              }).join("") +
+            '</section>';
+          }).join("") +
+        '</div>';
+    }
+
+    var linksHtml = "";
+    if(!cbse || hasLinks){
+      linksHtml =
+      '<div class="detail-grid">' +
+        '<div class="link-panel">' +
+          '<h3>Prerequisite chapters</h3>' +
+          '<p class="link-panel__hint">Have these solid before starting this one.</p>' +
+          linkList(c.prereq, "No formal prerequisite \u2014 this is a good place to start.") +
+          (c.prereqText ? '<p class="link-note"><b>CONCEPTS NEEDED</b><br>' + escapeHtml(c.prereqText) + '</p>' : '') +
+        '</div>' +
+        '<div class="link-panel">' +
+          '<h3>Used in later chapters</h3>' +
+          '<p class="link-panel__hint">This chapter feeds directly into&hellip;</p>' +
+          linkList(c.unlocks, "Not a direct prerequisite for any other mapped chapter.") +
+          (c.usedText ? '<p class="link-note"><b>REUSED IN</b><br>' + escapeHtml(c.usedText) + '</p>' : '') +
+        '</div>' +
+      '</div>';
+    }
 
     el.drawerContent.innerHTML =
-      '<p class="back-crumb">' + SUBJECT_LABEL[c.subject] + ' &middot; Class ' + c.cls + '</p>' +
+      '<p class="back-crumb">' + (cbse ? 'CBSE 2026\u201327 &middot; ' : '') + SUBJECT_LABEL[c.subject] + ' &middot; Class ' + c.cls + '</p>' +
 
       '<div class="chapter-detail__head">' +
-        '<div class="chapter-detail__badge">' + c.num + '<small>Ch.</small></div>' +
+        '<div class="chapter-detail__badge">' + (c.badge || c.num) + '<small>' + (c.badgeSmall || 'Ch.') + '</small></div>' +
         '<div class="chapter-detail__heading">' +
           '<h2 class="chapter-detail__title">' + escapeHtml(c.title) + '</h2>' +
           '<p class="chapter-detail__blurb">' + escapeHtml(c.blurb) + '</p>' +
@@ -261,18 +395,9 @@
         '<div id="topicsPanelBody">' + renderTopicsPanelInner(c) + '</div>' +
       '</div>' +
 
-      '<div class="detail-grid">' +
-        '<div class="link-panel">' +
-          '<h3>Prerequisite chapters</h3>' +
-          '<p class="link-panel__hint">Have these solid before starting this one.</p>' +
-          linkList(c.prereq, "No formal prerequisite \u2014 this is a good place to start.") +
-        '</div>' +
-        '<div class="link-panel">' +
-          '<h3>Used in later chapters</h3>' +
-          '<p class="link-panel__hint">This chapter feeds directly into&hellip;</p>' +
-          linkList(c.unlocks, "Not a direct prerequisite for any other mapped chapter.") +
-        '</div>' +
-      '</div>';
+      templatesHtml +
+      scopeHtml +
+      linksHtml;
 
     Array.prototype.slice.call(el.drawerContent.querySelectorAll(".link-chip")).forEach(function(btn){
       btn.addEventListener("click", function(){ openChapter(btn.dataset.id); });
@@ -284,12 +409,19 @@
     el.drawerContent.scrollTop = 0;
   }
 
+  function highlightScope(){
+    Array.prototype.slice.call(el.drawerContent.querySelectorAll(".scope-row")).forEach(function(row){
+      row.classList.toggle("is-focus", row.dataset.scope === state.topicFilter);
+    });
+  }
+
   function bindTopicFilterButtons(c){
     Array.prototype.slice.call(el.drawerContent.querySelectorAll(".topic-filter-btn")).forEach(function(btn){
       btn.onclick = function(){
         state.topicFilter = btn.dataset.filter;
         document.getElementById("topicsPanelBody").innerHTML = renderTopicsPanelInner(c);
         bindTopicFilterButtons(c);
+        highlightScope();
       };
     });
   }
@@ -299,6 +431,14 @@
     var c = byId[id];
     if(!c) return;
     state.openChapterId = id;
+    // keep the grid behind the drawer on the same subject/class as the chapter (e.g. after jumping PE -> Physics)
+    if(state.subject !== c.subject || state.cls !== c.cls){
+      if(isCbse(c.subject) && !isCbse(state.subject)) state.lastPcmCls = state.cls;
+      state.subject = c.subject;
+      state.cls = c.cls;
+      if(!isCbse(c.subject)) state.lastPcmCls = c.cls;
+      renderControls();
+    }
     renderDrawerContent(c);
     el.drawer.classList.add("is-open");
     el.drawer.setAttribute("aria-hidden", "false");
@@ -327,16 +467,48 @@
 
   // ---------- events ----------
   el.subjectBtns.forEach(function(btn){
-    btn.addEventListener("click", function(){
-      state.subject = btn.dataset.subject;
-      renderControls(); renderGrid();
-    });
+    btn.addEventListener("click", function(){ setSubject(btn.dataset.subject); });
   });
   el.classBtns.forEach(function(btn){
     btn.addEventListener("click", function(){
       state.cls = btn.dataset.cls;
+      state.lastPcmCls = btn.dataset.cls;
       renderControls(); renderGrid();
     });
+  });
+
+  // ---------- CBSE dropdown: opens on hover (mouse) or click/tap/keyboard ----------
+  var hoverCapable = window.matchMedia && window.matchMedia("(hover: hover)").matches;
+  var cbseCloseTimer = null;
+  function openCbseMenu(){
+    clearTimeout(cbseCloseTimer);
+    el.cbseMenu.classList.add("is-open");
+    el.cbseBtn.setAttribute("aria-expanded", "true");
+  }
+  function closeCbseMenu(){
+    clearTimeout(cbseCloseTimer);
+    el.cbseMenu.classList.remove("is-open");
+    el.cbseBtn.setAttribute("aria-expanded", "false");
+  }
+  el.cbseMenu.addEventListener("mouseenter", function(){ if(hoverCapable) openCbseMenu(); });
+  el.cbseMenu.addEventListener("mouseleave", function(){
+    if(hoverCapable) cbseCloseTimer = setTimeout(closeCbseMenu, 180);
+  });
+  el.cbseBtn.addEventListener("click", function(){
+    if(el.cbseMenu.classList.contains("is-open") && !hoverCapable) closeCbseMenu(); else openCbseMenu();
+  });
+  el.cbseBtn.addEventListener("keydown", function(e){
+    if(e.key === "ArrowDown"){ e.preventDefault(); openCbseMenu(); if(el.cbseItems[0]) el.cbseItems[0].focus(); }
+  });
+  el.cbseItems.forEach(function(it, i){
+    it.addEventListener("click", function(){ setSubject(it.dataset.subject); closeCbseMenu(); });
+    it.addEventListener("keydown", function(e){
+      if(e.key === "ArrowDown"){ e.preventDefault(); (el.cbseItems[i+1] || el.cbseItems[0]).focus(); }
+      if(e.key === "ArrowUp"){ e.preventDefault(); (el.cbseItems[i-1] || el.cbseItems[el.cbseItems.length-1]).focus(); }
+    });
+  });
+  document.addEventListener("click", function(e){
+    if(!el.cbseMenu.contains(e.target)) closeCbseMenu();
   });
   el.search.addEventListener("input", function(){
     state.query = el.search.value;
@@ -345,6 +517,26 @@
   el.grid.addEventListener("click", function(e){
     var card = e.target.closest(".chapter-card");
     if(card) openChapter(card.dataset.id);
+  });
+
+  el.drawerContent.addEventListener("click", function(e){
+    var tog = e.target.closest(".tpl-toggle");
+    if(tog){
+      var open = tog.dataset.tpl === "expand";
+      Array.prototype.slice.call(el.drawerContent.querySelectorAll("details.tpl")).forEach(function(d){ d.open = open; });
+      return;
+    }
+    var cp = e.target.closest(".tpl-copy");
+    if(cp){
+      var text = Array.prototype.slice.call(cp.parentNode.querySelectorAll(".tpl-line")).map(function(n){ return n.textContent; }).join("\n");
+      var done = function(ok){
+        cp.textContent = ok ? "Copied \u2713" : "Press Ctrl/Cmd+C to copy";
+        setTimeout(function(){ cp.textContent = "Copy template"; }, 1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+      } else { done(false); }
+    }
   });
 
   el.drawerClose.addEventListener("click", closeDrawer);
@@ -365,6 +557,7 @@
 
   document.addEventListener("keydown", function(e){
     if(e.key !== "Escape") return;
+    if(el.cbseMenu.classList.contains("is-open")){ closeCbseMenu(); el.cbseBtn.focus(); return; }
     if(el.legendOverlay.classList.contains("is-open")){ closeLegend(); return; }
     if(state.openChapterId){ closeDrawer(); }
   });
@@ -379,6 +572,7 @@
       var c = byId[hash];
       state.subject = c.subject;
       state.cls = c.cls;
+      if(!isCbse(c.subject)) state.lastPcmCls = c.cls;
       renderControls();
       renderGrid();
       openChapter(hash);
@@ -395,6 +589,7 @@
       var c = byId[hash];
       state.subject = c.subject;
       state.cls = c.cls;
+      if(!isCbse(c.subject)) state.lastPcmCls = c.cls;
       renderControls();
       renderGrid();
       openChapter(hash);

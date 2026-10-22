@@ -1,4 +1,4 @@
-// Auto-generated JEE syllabus chapter database
+// Auto-generated JEE / CBSE syllabus chapter database
 window.CHAPTERS = [
 {
 "id": "ph11-01",
@@ -30,7 +30,14 @@ window.CHAPTERS = [
 "ph12-09",
 "ph12-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Units, dimensions, SI system; significant figures; measurement errors; dimensional analysis.",
+"main": "Units and Measurements: SI/fundamental/derived units, least count, significant figures, errors and dimensions/dimensional analysis.",
+"adv": "Dimensional analysis and measurement reasoning within General/Experimental Physics."
+},
+"prereqText": "Powers of ten; arithmetic; unit conversion.",
+"usedText": "All numerical Physics; experiments; error checks."
 },
 {
 "id": "ph11-02",
@@ -61,7 +68,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph11-03"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Motion in straight line and plane; position/velocity/acceleration; graphs; projectile motion; relative motion; uniform circular motion.",
+"main": "Frame of reference; 1D/2D motion; speed/velocity; acceleration; graphs; relative velocity; projectile and circular motion.",
+"adv": "Kinematics embedded in mechanics; vector/graph reasoning within official syllabus."
+},
+"prereqText": "Algebra; vectors; graphs; trigonometry.",
+"usedText": "Laws of motion; work-energy; rotation; waves."
 },
 {
 "id": "ph11-03",
@@ -93,9 +107,17 @@ window.CHAPTERS = [
 ],
 "unlocks": [
 "ph11-04",
-"ph12-01"
+"ph12-01",
+"pe-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Motion in straight line and plane; position/velocity/acceleration; graphs; projectile motion; relative motion; uniform circular motion.",
+"main": "Frame of reference; 1D/2D motion; speed/velocity; acceleration; graphs; relative velocity; projectile and circular motion.",
+"adv": "Kinematics embedded in mechanics; vector/graph reasoning within official syllabus."
+},
+"prereqText": "Algebra; vectors; graphs; trigonometry.",
+"usedText": "Laws of motion; work-energy; rotation; waves."
 },
 {
 "id": "ph11-04",
@@ -128,9 +150,17 @@ window.CHAPTERS = [
 "ph11-05",
 "ph11-07",
 "ph11-08",
-"ph11-09"
+"ph11-09",
+"pe-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Newton's laws; inertia; momentum; impulse; conservation of momentum; friction; circular-motion dynamics.",
+"main": "Newton's laws, momentum/impulse, conservation, friction and uniform circular motion.",
+"adv": "Multi-body and constraint problems within listed mechanics syllabus."
+},
+"prereqText": "Kinematics; vectors; free-body diagrams.",
+"usedText": "Work-energy; rotation; gravitation; mechanics generally."
 },
 {
 "id": "ph11-05",
@@ -164,7 +194,14 @@ window.CHAPTERS = [
 "ph11-07",
 "ph11-13"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Work by constant/variable force; kinetic/potential energy; work-energy theorem; power; spring energy; conservation of mechanical energy; collisions.",
+"main": "Work, energy and power; potential energy; conservation; spring energy; collisions as stated.",
+"adv": "Collision and energy methods combined with mechanics within official scope."
+},
+"prereqText": "Laws of motion; algebra; graphs/integration intuition.",
+"usedText": "Rotation; gravitation; electrostatics; circuits."
 },
 {
 "id": "ph11-06",
@@ -201,7 +238,14 @@ window.CHAPTERS = [
 "Collision of a point mass with a rigid body": [
 "jee-adv"
 ]
-}
+},
+"scope": {
+"cbse": "Centre of mass; torque; angular momentum; moment of inertia; parallel/perpendicular axis theorems; rolling; rotational energy and equilibrium.",
+"main": "System of particles and rotational motion: COM, torque, angular momentum, inertia, rigid-body equilibrium and rolling.",
+"adv": "Rigid-body mechanics and conservation laws within Advanced Mechanics."
+},
+"prereqText": "Vectors; Newton's laws; work-energy.",
+"usedText": "Gravitation; rolling; rotational dynamics; angular momentum in atomic models."
 },
 {
 "id": "ph11-07",
@@ -231,7 +275,14 @@ window.CHAPTERS = [
 "ph11-05"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Newton's law; g variation; gravitational potential/energy; satellites; Kepler laws; escape/orbital velocity.",
+"main": "Universal gravitation, field/potential/energy, satellites and Kepler laws as listed.",
+"adv": "Gravitation within Advanced Mechanics; satellite/orbit derivations within syllabus."
+},
+"prereqText": "Circular motion; work-energy; vectors.",
+"usedText": "Electrostatics analogy; orbital mechanics; waves/space applications."
 },
 {
 "id": "ph11-08",
@@ -263,7 +314,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Elasticity; stress, strain, Hooke's law; elastic moduli.",
+"main": "Elastic behaviour, stress-strain, Hooke's law and moduli.",
+"adv": "Within mechanics/material properties; no separate extra theory unless stated in official unit."
+},
+"prereqText": "Force; area; proportionality.",
+"usedText": "Material science; springs; engineering structures."
 },
 {
 "id": "ph11-09",
@@ -303,7 +361,14 @@ window.CHAPTERS = [
 "ncert",
 "jee-main"
 ]
-}
+},
+"scope": {
+"cbse": "Pressure; Pascal's law; buoyancy; fluid flow; continuity; Bernoulli; viscosity; Stokes' law; surface tension/capillarity as specified.",
+"main": "Properties of solids and liquids includes fluid pressure, buoyancy, flow, viscosity, surface tension and related listed topics.",
+"adv": "Fluid mechanics and surface-tension/viscosity topics explicitly in Advanced Mechanics/Thermal Physics where named."
+},
+"prereqText": "Force; pressure; energy; basic calculus intuition.",
+"usedText": "Thermal physics; aerodynamics; flow and material systems."
 },
 {
 "id": "ph11-10",
@@ -339,7 +404,14 @@ window.CHAPTERS = [
 "ph11-11",
 "ph11-12"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Temperature; thermal expansion; calorimetry; heat transfer; specific/latent heat.",
+"main": "Thermal properties and calorimetry/heat transfer as included in the combined Main unit structure.",
+"adv": "Thermal Physics includes calorimetry, latent heat, heat transfer and related listed topics."
+},
+"prereqText": "Energy; units; proportionality.",
+"usedText": "Thermodynamics; heat engines; material properties."
 },
 {
 "id": "ph11-11",
@@ -371,7 +443,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph11-12"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Thermal equilibrium; zeroth/first/second laws; internal energy; work/heat; thermodynamic processes; heat engines/refrigerators.",
+"main": "Thermodynamics: thermal equilibrium, laws, internal energy, work, heat, processes and engines as listed.",
+"adv": "Thermal Physics includes first/second law, reversible/irreversible processes, Carnot engine and related listed concepts."
+},
+"prereqText": "Heat/temperature; work-energy; graphs.",
+"usedText": "Kinetic theory; engines; chemistry thermodynamics."
 },
 {
 "id": "ph11-12",
@@ -401,7 +480,14 @@ window.CHAPTERS = [
 "ph11-11"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Ideal gas equation; molecular kinetic model; pressure; RMS speed; degrees of freedom; equipartition; mean free path where included.",
+"main": "Kinetic theory of gases and gas laws; degrees of freedom/equipartition/mean free path according to exact unit wording.",
+"adv": "Kinetic theory and gas laws explicitly appear in Advanced Thermal Physics."
+},
+"prereqText": "Mole concept; algebra; temperature scales.",
+"usedText": "Thermodynamics; gas/liquid states in Chemistry."
 },
 {
 "id": "ph11-13",
@@ -432,7 +518,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph11-14"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Periodic motion; SHM; displacement/velocity/acceleration; phase; spring and pendulum; energy.",
+"main": "Oscillations: periodic motion, SHM, equations and energy; spring/pendulum models.",
+"adv": "SHM, oscillations and combinations within Mechanics/Thermal Physics scope."
+},
+"prereqText": "Trigonometry; kinematics; force/energy.",
+"usedText": "Waves; AC circuits; molecular vibration models."
 },
 {
 "id": "ph11-14",
@@ -464,7 +557,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-10"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Wave motion; transverse/longitudinal; speed; superposition; standing waves; strings/organ pipes; beats; Doppler effect where specified.",
+"main": "Waves: wave speed, superposition, standing waves, strings/air columns, beats and Doppler effect as listed.",
+"adv": "Sound/wave topics within official Advanced Mechanics scope."
+},
+"prereqText": "Oscillations; trigonometry; algebra.",
+"usedText": "Optics; sound; electromagnetic waves; resonance."
 },
 {
 "id": "ph12-01",
@@ -498,7 +598,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-02"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Charge; Coulomb's law; superposition; electric field; dipole; flux; Gauss's law and applications.",
+"main": "Electrostatics includes charge, Coulomb law, fields, dipole, flux and Gauss law applications.",
+"adv": "Electrostatics in Advanced Electricity and Magnetism; field/potential and conductors as listed."
+},
+"prereqText": "Vectors; force; inverse-square laws.",
+"usedText": "Potential; capacitance; current; magnetism."
 },
 {
 "id": "ph12-02",
@@ -531,7 +638,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-03"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Potential/potential energy; equipotential surfaces; conductors; capacitors; dielectric; series/parallel; energy stored.",
+"main": "Potential, potential energy, equipotential surfaces, conductors, capacitance, dielectrics and capacitor combinations.",
+"adv": "Electrostatic potential/capacitance and energy within Advanced Electricity and Magnetism."
+},
+"prereqText": "Electric field; work-energy; algebra.",
+"usedText": "Current electricity; dielectric materials; circuits."
 },
 {
 "id": "ph12-03",
@@ -566,7 +680,14 @@ window.CHAPTERS = [
 "ph12-14",
 "ph12-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Current; drift velocity; Ohm's law; resistance/resistivity; series/parallel; cells; Kirchhoff laws; Wheatstone/metre bridge; power.",
+"main": "Current electricity, resistivity, cells, combinations, Kirchhoff rules and bridge circuits as listed.",
+"adv": "DC circuits and Kirchhoff laws within Advanced Electricity and Magnetism."
+},
+"prereqText": "Charge; potential difference; algebra.",
+"usedText": "Magnetic effects; RC/circuit concepts; electronics."
 },
 {
 "id": "ph12-04",
@@ -600,7 +721,14 @@ window.CHAPTERS = [
 "ph12-05",
 "ph12-06"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Lorentz force; motion in magnetic field; Biot–Savart; Ampere law; force between currents; torque on loop; galvanometer.",
+"main": "Magnetic force on charges/currents, fields from currents, torque and galvanometer conversion as listed.",
+"adv": "Magnetic force/field laws and charged-particle motion within Advanced syllabus."
+},
+"prereqText": "Vectors; current; circular motion.",
+"usedText": "Magnetism; EMI; mass spectrometers/cyclotrons as conceptual applications."
 },
 {
 "id": "ph12-05",
@@ -630,7 +758,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-06"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Bar magnet; field lines; magnetic dipole; Earth's magnetism; dia/para/ferromagnetism.",
+"main": "Magnetism and matter, magnetic dipole, materials and Earth magnetism according to Main unit wording.",
+"adv": "Magnetic materials and dipole ideas within Advanced Electricity and Magnetism where listed."
+},
+"prereqText": "Magnetic fields; dipoles; vectors.",
+"usedText": "Electromagnetism; materials science."
 },
 {
 "id": "ph12-06",
@@ -662,7 +797,14 @@ window.CHAPTERS = [
 "ph12-07",
 "ph12-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Magnetic flux; Faraday/Lenz laws; induced emf/current; self and mutual inductance.",
+"main": "EMI, Faraday/Lenz laws and inductance.",
+"adv": "Induction and inductance within Advanced Electricity and Magnetism."
+},
+"prereqText": "Magnetic fields; flux; calculus intuition.",
+"usedText": "AC; generators; transformers."
 },
 {
 "id": "ph12-07",
@@ -698,7 +840,14 @@ window.CHAPTERS = [
 "jee-main",
 "jee-adv"
 ]
-}
+},
+"scope": {
+"cbse": "AC voltage/current; peak/RMS; reactance; impedance; LCR; resonance; power factor; transformer.",
+"main": "AC circuits, reactance, impedance, resonance, power and transformer as listed.",
+"adv": "AC circuit concepts within Advanced Electricity and Magnetism."
+},
+"prereqText": "Current electricity; induction; trigonometry.",
+"usedText": "Electronics; power systems; resonance."
 },
 {
 "id": "ph12-08",
@@ -727,7 +876,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-11"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Displacement current concept; EM wave nature; spectrum and properties.",
+"main": "Electromagnetic waves and spectrum.",
+"adv": "EM waves and electromagnetic spectrum within official Advanced syllabus."
+},
+"prereqText": "Electricity and magnetism; waves.",
+"usedText": "Optics; communications; radiation."
 },
 {
 "id": "ph12-09",
@@ -759,7 +915,14 @@ window.CHAPTERS = [
 "ph12-10",
 "ph12-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Reflection/refraction; mirrors/lenses; total internal reflection; prism; optical instruments; power of lens.",
+"main": "Ray optics, refraction, lenses/mirrors, prism, optical instruments and related listed formulas.",
+"adv": "Geometrical optics and instruments within Advanced Optics."
+},
+"prereqText": "Geometry; trigonometry; refraction.",
+"usedText": "Wave optics; vision/instruments; imaging."
 },
 {
 "id": "ph12-10",
@@ -789,7 +952,14 @@ window.CHAPTERS = [
 "ph12-09"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Wavefront; Huygens principle; interference; Young's double-slit; diffraction; polarization as included.",
+"main": "Wave optics, interference, diffraction and polarization according to Main syllabus.",
+"adv": "Interference/diffraction and optical phenomena within Advanced Optics."
+},
+"prereqText": "Waves; phase; trigonometry.",
+"usedText": "Optical instruments; modern physics; spectroscopy."
 },
 {
 "id": "ph12-11",
@@ -818,7 +988,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-12"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Photoelectric effect; Einstein equation; matter waves/de Broglie relation.",
+"main": "Photoelectric effect, particle nature of radiation, matter waves and de Broglie relation.",
+"adv": "Dual nature and matter waves within Advanced Modern Physics."
+},
+"prereqText": "Energy; waves; momentum.",
+"usedText": "Atoms; quantum ideas; semiconductor physics."
 },
 {
 "id": "ph12-12",
@@ -846,7 +1023,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ph12-13"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Rutherford model; Bohr model; energy levels; hydrogen spectrum.",
+"main": "Atomic models, Bohr theory, energy levels and spectra as listed.",
+"adv": "Atomic physics within Advanced Modern Physics."
+},
+"prereqText": "Electrostatics; circular motion; energy.",
+"usedText": "Nuclei; quantum physics; spectroscopy."
 },
 {
 "id": "ph12-13",
@@ -875,7 +1059,14 @@ window.CHAPTERS = [
 "ph12-12"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Nuclear size/composition; mass defect; binding energy; radioactivity; decay; fission/fusion.",
+"main": "Nuclear composition, mass defect, binding energy, decay law, fission/fusion as listed.",
+"adv": "Nuclear physics within Advanced Modern Physics."
+},
+"prereqText": "Atomic structure; energy; exponential functions.",
+"usedText": "Radiation; nuclear energy; particle physics basics."
 },
 {
 "id": "ph12-14",
@@ -902,7 +1093,14 @@ window.CHAPTERS = [
 "ph12-03"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Semiconductors; p-n junction; diode characteristics; rectifier; LED/photodiode/solar cell; Zener; logic gates as prescribed.",
+"main": "Electronic devices, semiconductor diode, I-V characteristics, rectifier, optoelectronic devices, Zener and logic gates in Main syllabus.",
+"adv": "Electronic devices/semiconductors where stated in Advanced Modern Physics syllabus."
+},
+"prereqText": "Current electricity; charge carriers; basic circuits.",
+"usedText": "Digital electronics; sensors; computing hardware."
 },
 {
 "id": "ch11-01",
@@ -937,7 +1135,14 @@ window.CHAPTERS = [
 "ch11-10",
 "ch11-14"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Mole concept; atomic/molecular mass; stoichiometry; chemical formulae; concentration expressions and calculations.",
+"main": "Mole concept, stoichiometry, formulae, concentration terms and calculations.",
+"adv": "General topics include mole concept, formulae, balanced equations, stoichiometric calculations and concentration units including normality."
+},
+"prereqText": "Arithmetic; ratios; equations.",
+"usedText": "All quantitative Chemistry; equilibrium; solutions; electrochemistry."
 },
 {
 "id": "ch11-02",
@@ -972,7 +1177,14 @@ window.CHAPTERS = [
 "ch11-03",
 "ch12-04"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Subatomic particles; atomic models; Bohr model; spectra; quantum numbers; orbitals; electronic configuration.",
+"main": "Atomic structure: radiation, Bohr model, de Broglie, uncertainty, quantum numbers/orbitals, Aufbau/Pauli/Hund as listed.",
+"adv": "Atomic structure includes wave-particle duality, uncertainty, qualitative quantum-mechanical picture, orbitals and electronic configuration rules."
+},
+"prereqText": "Mole/atoms; basic algebra; light-frequency relations.",
+"usedText": "Periodic properties; bonding; spectroscopy; physical chemistry."
 },
 {
 "id": "ch11-03",
@@ -1008,7 +1220,14 @@ window.CHAPTERS = [
 "ch12-04",
 "ch12-11"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Periodic table; electronic configuration; periodic trends in radii, ionisation enthalpy, electron gain enthalpy, electronegativity and valency.",
+"main": "Periodicity, electronic configuration and general periodic trends.",
+"adv": "Periodic properties and anomalous behaviour are used across inorganic chemistry; follow Advanced topic list."
+},
+"prereqText": "Atomic structure; nuclear charge; shells.",
+"usedText": "Chemical bonding; p-block; d/f-block; reactivity."
 },
 {
 "id": "ch11-04",
@@ -1047,7 +1266,14 @@ window.CHAPTERS = [
 "ch12-05",
 "ch12-17"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Ionic/covalent bonds; Lewis structures; VSEPR; hybridisation; polarity; bond parameters; molecular orbital basics; hydrogen bonding.",
+"main": "Bonding: ionic/covalent; Lewis structures; VSEPR; hybridisation; polarity/dipole; MO theory and hydrogen bond as listed.",
+"adv": "Advanced explicitly specifies orbital overlap, hybridisation involving s/p/d orbitals, homonuclear diatomic MO diagrams up to Ne2, VSEPR shapes and hydrogen bonding."
+},
+"prereqText": "Atomic structure; periodicity; electronegativity.",
+"usedText": "Molecular geometry; coordination compounds; organic mechanisms; properties."
 },
 {
 "id": "ch11-05",
@@ -1080,7 +1306,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch11-06"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "System/surroundings; work/heat; internal energy/enthalpy; first law; Hess law; entropy and Gibbs energy as prescribed.",
+"main": "Thermodynamics: first law, enthalpy, Hess law, entropy/Gibbs energy and spontaneity per official wording.",
+"adv": "Thermodynamics including enthalpy, entropy, Gibbs energy, spontaneity and equilibrium connections."
+},
+"prereqText": "Mole concept; algebra; energy/temperature.",
+"usedText": "Chemical equilibrium; electrochemistry; phase changes."
 },
 {
 "id": "ch11-06",
@@ -1117,7 +1350,14 @@ window.CHAPTERS = [
 "ch12-01",
 "ch12-03"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Dynamic equilibrium; equilibrium constants; Le Chatelier; acids/bases; pH; buffers; solubility product; ionic equilibrium.",
+"main": "Chemical and ionic equilibrium; Kc/Kp, Le Chatelier, acid-base, pH, buffer, hydrolysis and solubility product as listed.",
+"adv": "Chemical equilibrium, ionic equilibrium, pH, buffers, solubility product and related calculations within official syllabus."
+},
+"prereqText": "Mole concept; stoichiometry; logarithms; thermodynamics.",
+"usedText": "Electrochemistry; analytical chemistry; inorganic precipitation."
 },
 {
 "id": "ch11-07",
@@ -1145,7 +1385,14 @@ window.CHAPTERS = [
 "ch12-02",
 "ch12-16"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Oxidation/reduction; oxidation number; balancing redox equations; oxidising/reducing agents.",
+"main": "Redox processes and oxidation-number balancing in the official unit.",
+"adv": "General topics include stoichiometric calculations involving redox reactions."
+},
+"prereqText": "Chemical formulae; oxidation states; equations.",
+"usedText": "Electrochemistry; inorganic reactions; titrations."
 },
 {
 "id": "ch11-08",
@@ -1184,13 +1431,14 @@ window.CHAPTERS = [
 "ch12-09",
 "ch12-16"
 ],
-"topicOverrides": {
-"Isomerism — structural and stereoisomerism": [
-"ncert",
-"jee-main",
-"jee-adv"
-]
-}
+"topicOverrides": {},
+"scope": {
+"cbse": "Nomenclature; purification/characterisation; electronic effects; bond fission; intermediates; reaction types; isomerism.",
+"main": "Purification/characterisation and basic principles of organic chemistry; nomenclature, isomerism, electronic effects and reaction mechanisms as specified.",
+"adv": "General organic principles including structural/stereoisomerism, inductive/resonance/hyperconjugation, intermediates and reaction types within official list."
+},
+"prereqText": "Chemical bonding; periodicity; acid-base ideas.",
+"usedText": "All organic chapters; mechanisms; stereochemistry."
 },
 {
 "id": "ch11-09",
@@ -1226,7 +1474,14 @@ window.CHAPTERS = [
 "ch12-10",
 "ch12-14"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Alkanes, alkenes, alkynes and aromatic hydrocarbons; preparations, properties and reactions.",
+"main": "Hydrocarbons: aliphatic/aromatic classes, reactions and properties as listed.",
+"adv": "Hydrocarbons include preparation, properties and reactions of alkanes/alkenes/alkynes/benzene and related named reactions per official list."
+},
+"prereqText": "GOC; nomenclature; bonding; isomerism.",
+"usedText": "Halo compounds; aromatic substitution; organic synthesis."
 },
 {
 "id": "ch11-10",
@@ -1249,7 +1504,6 @@ window.CHAPTERS = [
 ],
 "tags": [
 "cbse-formative",
-"jee-main",
 "jee-adv"
 ],
 "prereq": [
@@ -1259,7 +1513,14 @@ window.CHAPTERS = [
 "ch12-01",
 "ch12-17"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE Chemistry 2026–27: listed as formative-only in the syllabus notes; treat as curriculum-present but not summatively assessed.",
+"main": "JEE Main 2026 does not list a standalone States of Matter unit. Do not label it Main-required merely because it is in NCERT or Advanced.",
+"adv": "Advanced explicitly includes gas laws, ideal/van der Waals gases, kinetic theory, partial pressures, diffusion, intermolecular interactions, vapour pressure, surface tension and viscosity."
+},
+"prereqText": "Mole concept; pressure/temperature units; algebra.",
+"usedText": "Kinetic theory in Physics; thermodynamics; solutions."
 },
 {
 "id": "ch11-11",
@@ -1282,7 +1543,6 @@ window.CHAPTERS = [
 ],
 "tags": [
 "cbse-formative",
-"jee-main",
 "jee-adv"
 ],
 "prereq": [
@@ -1290,7 +1550,14 @@ window.CHAPTERS = [
 "ch11-04"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE Chemistry 2026–27 includes s & p block as formative-only in the curriculum notes; not a summative chapter.",
+"main": "No standalone s-block unit in JEE Main 2026 Chemistry.",
+"adv": "JEE Advanced includes alkali/alkaline earth elements, trends, compounds, preparation/properties and reactions as listed."
+},
+"prereqText": "Periodic trends; redox; bonding.",
+"usedText": "Inorganic chemistry; salt reactions; periodicity."
 },
 {
 "id": "ch11-12",
@@ -1322,7 +1589,31 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-11"
 ],
-"topicOverrides": {}
+"topicOverrides": {
+"Important compounds — borax, boric acid, diborane, boron trifluoride": [
+"cbse-formative",
+"jee-adv"
+],
+"Uses of boron and aluminium; aluminium chloride, alums": [
+"cbse-formative",
+"jee-adv"
+],
+"Important compounds — carbon monoxide, carbon dioxide": [
+"cbse-formative",
+"jee-adv"
+],
+"Silicon compounds — silicon dioxide, silicones, silicates, zeolites": [
+"cbse-formative",
+"jee-adv"
+]
+},
+"scope": {
+"cbse": "CBSE includes s & p block as formative-only in the curriculum notes; status differs from summatively assessed chapters.",
+"main": "Main Unit p-block: Groups 13–18; electronic configuration, general trends across/down groups and anomalous behaviour of first element of each group.",
+"adv": "Advanced requires substantially more group-specific chemistry: trends, oxidation states, preparation/properties/reactions and named compounds/oxoacids/allotropes where listed."
+},
+"prereqText": "Atomic structure; periodicity; bonding; redox.",
+"usedText": "Inorganic chemistry; coordination; qualitative analysis."
 },
 {
 "id": "ch11-13",
@@ -1348,7 +1639,14 @@ window.CHAPTERS = [
 "ch11-03"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Not a standalone summative CBSE Chemistry unit in the current course structure; verify any school/formative treatment separately.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced includes hydrogen, isotopes, preparation/properties, hydrides, water/hydrogen peroxide and related reactions in its official list."
+},
+"prereqText": "Periodic table; redox; bonding.",
+"usedText": "Inorganic trends; acid-base/redox chemistry."
 },
 {
 "id": "ch11-14",
@@ -1374,7 +1672,15 @@ window.CHAPTERS = [
 "ch11-01"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Not a standalone summative CBSE 2026–27 chapter in the listed Chemistry course structure.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced explicitly includes environmental chemistry topics in its syllabus list."
+},
+"prereqText": "Basic chemical reactions; gases; redox.",
+"usedText": "Environmental applications; industrial chemistry.",
+"span": "XI–XII"
 },
 {
 "id": "ch12-01",
@@ -1407,7 +1713,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-02"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Concentration terms; solubility; vapour pressure; Raoult's law; colligative properties; abnormal molar mass.",
+"main": "Solutions, concentration, Raoult's law, colligative properties and van't Hoff factor as listed.",
+"adv": "Solutions and colligative properties within Advanced Physical Chemistry where stated."
+},
+"prereqText": "Mole concept; intermolecular forces; algebra.",
+"usedText": "Electrochemistry; thermodynamics; analytical calculations."
 },
 {
 "id": "ch12-02",
@@ -1442,7 +1755,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-13"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Electrochemical cells; electrode potential; Nernst equation; conductance; Kohlrausch law; electrolysis; batteries/fuel cells/corrosion.",
+"main": "Electrochemistry: cells, standard potential, Nernst, conductance, electrolysis and batteries/corrosion as listed.",
+"adv": "Electrochemistry within Advanced Physical Chemistry official scope."
+},
+"prereqText": "Redox; equilibrium; logarithms; electricity basics.",
+"usedText": "Chemical kinetics; corrosion; industrial chemistry."
 },
 {
 "id": "ch12-03",
@@ -1473,7 +1793,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-12"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Rate; order/molecularity; rate law; integrated rate equations; half-life; Arrhenius equation and activation energy.",
+"main": "Chemical kinetics: rate laws, order, integrated equations for listed reactions, half-life, temperature dependence and activation energy.",
+"adv": "Kinetics within Advanced Physical Chemistry official scope."
+},
+"prereqText": "Algebra; logarithms; concentration; graphs.",
+"usedText": "Reaction mechanisms; catalysis; physical chemistry."
 },
 {
 "id": "ch12-04",
@@ -1508,7 +1835,14 @@ window.CHAPTERS = [
 "ch12-05",
 "ch12-13"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Electronic configuration; oxidation states; trends; colour/magnetism; catalytic properties; lanthanoid contraction.",
+"main": "Transition elements and inner-transition elements; configurations, trends, compounds and reactions explicitly listed.",
+"adv": "Advanced inorganic syllabus includes transition elements and specified properties/reactions; use exact official list."
+},
+"prereqText": "Periodic trends; atomic structure; redox.",
+"usedText": "Coordination chemistry; qualitative analysis; inorganic reactions."
 },
 {
 "id": "ch12-05",
@@ -1538,7 +1872,14 @@ window.CHAPTERS = [
 "ch11-04"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Ligands; coordination number; nomenclature; isomerism; bonding/VBT; crystal field basics; colour/magnetism; applications.",
+"main": "Coordination compounds: nomenclature, isomerism, bonding, magnetic behaviour, colour and applications as listed.",
+"adv": "Advanced includes coordination compounds, ligands, isomerism, bonding and related reactions as specified."
+},
+"prereqText": "Chemical bonding; d-block; oxidation states.",
+"usedText": "Inorganic reactions; qualitative analysis; bioinorganic chemistry."
 },
 {
 "id": "ch12-06",
@@ -1570,7 +1911,14 @@ window.CHAPTERS = [
 "ch12-07",
 "ch12-09"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Nomenclature; C–X bond; preparation; physical/chemical properties; substitution mechanisms; uses/environmental effects.",
+"main": "Organic halogen compounds, preparations/properties/reactions and mechanisms as listed.",
+"adv": "Halo compounds, nucleophilic substitution, elimination and related reaction logic within official Organic Chemistry list."
+},
+"prereqText": "GOC; hydrocarbons; nomenclature.",
+"usedText": "Alcohols/phenols/ethers; amines; synthesis."
 },
 {
 "id": "ch12-07",
@@ -1601,7 +1949,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Nomenclature; preparation; properties; acidity; reactions; distinguishing tests.",
+"main": "Oxygen-containing organic compounds: alcohols, phenols, ethers; preparation, properties and reactions as listed.",
+"adv": "Alcohols/phenols/ethers and specified reactions in Advanced Organic Chemistry."
+},
+"prereqText": "GOC; haloalkanes; aromatic chemistry.",
+"usedText": "Carbonyl compounds; organic synthesis; biomolecules."
 },
 {
 "id": "ch12-08",
@@ -1634,7 +1989,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-10"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Carbonyl group; nomenclature; preparation; nucleophilic addition; oxidation/reduction; acidity; named reactions/tests.",
+"main": "Carbonyl compounds and carboxylic acids; preparations/properties/reactions and named reactions listed by NTA.",
+"adv": "Advanced explicitly includes aldehydes/ketones/carboxylic acids, reactivity and named reactions within official list."
+},
+"prereqText": "GOC; alcohols; aromatic chemistry.",
+"usedText": "Amines; biomolecules; synthesis pathways."
 },
 {
 "id": "ch12-09",
@@ -1663,7 +2025,14 @@ window.CHAPTERS = [
 "ch11-08"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Classification/nomenclature; preparation; basicity; reactions; diazonium salts and their transformations.",
+"main": "Amines and related nitrogen-containing organic compounds, reactions and properties as listed.",
+"adv": "Amines, diazonium salts and related reactions within Advanced Organic Chemistry."
+},
+"prereqText": "GOC; haloalkanes; carbonyl compounds.",
+"usedText": "Biomolecules; aromatic synthesis; polymers context."
 },
 {
 "id": "ch12-10",
@@ -1697,7 +2066,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ch12-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Carbohydrates; proteins; amino acids; enzymes; vitamins; nucleic acids and biological roles.",
+"main": "Biomolecules: carbohydrates, proteins, vitamins, nucleic acids and related named content in NTA syllabus.",
+"adv": "Biomolecules within Advanced Organic Chemistry; use official named list."
+},
+"prereqText": "Organic functional groups; basic biology terminology.",
+"usedText": "Biochemistry; polymers; life-science applications."
 },
 {
 "id": "ch12-11",
@@ -1728,7 +2104,43 @@ window.CHAPTERS = [
 "ch11-03"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {
+"Preparation and properties of ammonia, nitric acid, phosphine": [
+"cbse-formative",
+"jee-adv"
+],
+"Oxides of nitrogen; oxoacids of phosphorus": [
+"cbse-formative",
+"jee-adv"
+],
+"Preparation and properties of ozone, sulphur dioxide, sulfuric acid": [
+"cbse-formative",
+"jee-adv"
+],
+"Oxoacids of sulphur": [
+"cbse-formative",
+"jee-adv"
+],
+"Preparation and properties of chlorine, hydrogen chloride": [
+"cbse-formative",
+"jee-adv"
+],
+"Oxoacids of halogens; bleaching powder": [
+"cbse-formative",
+"jee-adv"
+],
+"Group 18 — noble gases, compounds of xenon": [
+"cbse-formative",
+"jee-adv"
+]
+},
+"scope": {
+"cbse": "CBSE includes s & p block as formative-only in the curriculum notes; status differs from summatively assessed chapters.",
+"main": "Main Unit p-block: Groups 13–18; electronic configuration, general trends across/down groups and anomalous behaviour of first element of each group.",
+"adv": "Advanced requires substantially more group-specific chemistry: trends, oxidation states, preparation/properties/reactions and named compounds/oxoacids/allotropes where listed."
+},
+"prereqText": "Atomic structure; periodicity; bonding; redox.",
+"usedText": "Inorganic chemistry; coordination; qualitative analysis."
 },
 {
 "id": "ch12-12",
@@ -1749,14 +2161,20 @@ window.CHAPTERS = [
 ],
 "tags": [
 "cbse-formative",
-"jee-main",
 "jee-adv"
 ],
 "prereq": [
 "ch12-03"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE 2026–27: formative-only topic in syllabus notes; curriculum-present but not summatively assessed.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced explicitly includes adsorption, colloids, emulsions and related surface chemistry topics as listed."
+},
+"prereqText": "Intermolecular forces; concentration; kinetics.",
+"usedText": "Catalysis; materials; colloids."
 },
 {
 "id": "ch12-13",
@@ -1775,7 +2193,6 @@ window.CHAPTERS = [
 ],
 "tags": [
 "cbse-formative",
-"jee-main",
 "jee-adv"
 ],
 "prereq": [
@@ -1783,7 +2200,14 @@ window.CHAPTERS = [
 "ch12-04"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE 2026–27: formative-only topic in syllabus notes; curriculum-present but not summatively assessed.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced includes extraction/metallurgy principles, concentration, reduction, refining and thermodynamic/electrochemical aspects as listed."
+},
+"prereqText": "Redox; thermodynamics; periodicity.",
+"usedText": "Metallurgy; materials; electrochemistry."
 },
 {
 "id": "ch12-14",
@@ -1809,7 +2233,14 @@ window.CHAPTERS = [
 "ch11-09"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE 2026–27: formative-only topic in syllabus notes; curriculum-present but not summatively assessed.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced includes polymers, monomers, polymerisation and examples where specified."
+},
+"prereqText": "Organic functional groups; hydrocarbons.",
+"usedText": "Materials science; biomolecules; applied chemistry."
 },
 {
 "id": "ch12-15",
@@ -1834,7 +2265,14 @@ window.CHAPTERS = [
 "ch12-10"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE 2026–27: formative-only topic in syllabus notes; curriculum-present but not summatively assessed.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced includes chemistry in everyday life, including drugs/cleansing agents/food-related examples in official list."
+},
+"prereqText": "Organic chemistry basics; functional groups.",
+"usedText": "Applied chemistry; biology; consumer materials."
 },
 {
 "id": "ch12-16",
@@ -1860,7 +2298,15 @@ window.CHAPTERS = [
 "ch11-07"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE practical chemistry includes qualitative/salt-analysis work according to the official practical syllabus; exact school practical list may differ. — CBSE practical assessment includes experiments, salt analysis and titrimetric/qualitative work according to the official practical syllabus.",
+"main": "JEE Main Practical Chemistry includes detection of specified elements/ions and practical principles; follow the exact NTA list. — Main Unit Practical Chemistry explicitly lists principles relating to detection of elements/functional groups, preparation and practical chemistry topics.",
+"adv": "JEE Advanced explicitly lists cation groups I–V and specified anions (fluoride excluded); preserve the ion list exactly in a website subtopic tree. — Advanced includes Principles of Qualitative Analysis and specified salt/ion tests; do not assume all CBSE practicals map identically."
+},
+"prereqText": "Equilibrium; solubility; redox; periodicity; reaction observations. / Redox; equilibrium; solubility; organic functional groups.",
+"usedText": "Inorganic chemistry; salt analysis; laboratory identification. / Laboratory analysis; qualitative inorganic chemistry.",
+"span": "XI–XII"
 },
 {
 "id": "ma11-01",
@@ -1894,7 +2340,14 @@ window.CHAPTERS = [
 "ma11-14",
 "ma12-03"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Set notation; empty/finite/infinite/equal sets; subsets and intervals; universal set; Venn diagrams; union, intersection, difference, complement and laws.",
+"main": "Sets, subsets, power set; union/intersection/complement and elementary set operations.",
+"adv": "No distinct standalone Advanced-only set chapter; set language supports functions, counting and probability."
+},
+"prereqText": "Number line; elementary logic; interval notation.",
+"usedText": "Relations/functions; domains; probability; set-based counting."
 },
 {
 "id": "ma11-02",
@@ -1929,7 +2382,14 @@ window.CHAPTERS = [
 "ma11-12",
 "ma12-01"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Ordered pairs; Cartesian products; relations; domain, codomain, range; function concept and graphs of standard real functions.",
+"main": "Relations and functions; domain/range; types of relations; one-one/onto; composition; standard functions and their graphs.",
+"adv": "Composition/inverse/function behaviour and domain-range reasoning in multi-topic problems; use exact official syllabus wording rather than assuming extra named function families."
+},
+"prereqText": "Sets; Cartesian coordinates; algebra; graphs.",
+"usedText": "Inverse functions; limits; continuity; calculus; probability."
 },
 {
 "id": "ma11-03",
@@ -1961,7 +2421,14 @@ window.CHAPTERS = [
 "ma12-02",
 "ma12-10"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Radian/degree measure; unit-circle idea; signs; identities; graphs and elementary trigonometric equations.",
+"main": "Trigonometric identities, transformations and equations within NTA's Trigonometry unit; inverse trigonometric functions appear in the Main syllabus as well.",
+"adv": "Trigonometric equations/identities and their synthesis with geometry and calculus, within listed syllabus."
+},
+"prereqText": "Algebra; angle measure; coordinate plane.",
+"usedText": "Limits/derivatives; integration; vectors; oscillations and waves in Physics."
 },
 {
 "id": "ma11-04",
@@ -1992,7 +2459,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma11-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Complex numbers; algebraic operations; Argand plane; quadratic equations, roots and discriminant.",
+"main": "Complex numbers, modulus/argument, algebra and geometry of complex numbers; quadratic equations and relations between roots and coefficients.",
+"adv": "Geometric interpretation and advanced algebraic manipulation of complex numbers and quadratic equations."
+},
+"prereqText": "Real numbers; algebraic identities; quadratic equations.",
+"usedText": "Polynomial roots; loci; advanced algebra; matrices/equations context."
 },
 {
 "id": "ma11-05",
@@ -2016,7 +2490,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-12"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Linear inequalities in one variable; solution sets and number-line representation.",
+"main": "Inequalities may be used across algebra/functions; no standalone Linear Programming unit in JEE Main 2026 Paper 1.",
+"adv": "Inequality reasoning within listed algebra/functions; do not invent a separate syllabus unit."
+},
+"prereqText": "Linear equations; sign rules; intervals.",
+"usedText": "Function domains; calculus sign analysis; optimization."
 },
 {
 "id": "ma11-06",
@@ -2047,7 +2528,14 @@ window.CHAPTERS = [
 "ma11-07",
 "ma11-14"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Fundamental principle of counting; factorial; permutations and combinations; elementary applications.",
+"main": "Permutations/combinations, arrangements and selections, including restrictions where derivable from listed unit.",
+"adv": "Counting cases and multi-condition arrangements/selections within official scope."
+},
+"prereqText": "Factorials; elementary counting; algebra.",
+"usedText": "Probability; binomial theorem; combinatorics."
 },
 {
 "id": "ma11-07",
@@ -2074,7 +2562,14 @@ window.CHAPTERS = [
 "ma11-06"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Binomial theorem for positive integral index; general and middle terms; elementary applications.",
+"main": "Binomial expansion, general term, middle term and coefficient-based questions.",
+"adv": "Parameter/coefficient questions and more involved algebraic applications within the stated theorem."
+},
+"prereqText": "P&C; powers; algebraic identities.",
+"usedText": "Sequences/series; algebra; probability."
 },
 {
 "id": "ma11-08",
@@ -2103,7 +2598,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma11-15"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Arithmetic/geometric progressions; nth term and sums; arithmetic/geometric means; AM-GM.",
+"main": "AP, GP, sums and standard sequence/series results listed in Algebra.",
+"adv": "Mixed algebraic/sequence problems within official syllabus; avoid adding recurrence topics unless explicitly listed."
+},
+"prereqText": "Algebra; fractions; indices.",
+"usedText": "Binomial theorem; limits; mathematical modelling."
 },
 {
 "id": "ma11-09",
@@ -2133,7 +2635,14 @@ window.CHAPTERS = [
 "ma11-10",
 "ma11-11"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Cartesian coordinates; slope; line forms; angle between lines; distance of point from line; concurrency and triangle-centre applications as prescribed by CBSE.",
+"main": "Straight-line equations and coordinate geometry: slope, line forms, angle and distances; intersections and related properties.",
+"adv": "Coordinate geometry synthesis with circles/conics and loci."
+},
+"prereqText": "Coordinate plane; algebra; distance formula.",
+"usedText": "Circle/conics; 3D; tangents/normals; vectors."
 },
 {
 "id": "ma11-10",
@@ -2162,7 +2671,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-08"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Circle; standard parabola, ellipse and hyperbola; standard equations and elementary properties.",
+"main": "Circle and conic sections, including equations and the parameters explicitly listed by NTA.",
+"adv": "Focus/directrix, eccentricity, parametric or tangent/normal properties only where named in the official Advanced syllabus; see source wording."
+},
+"prereqText": "Straight lines; distance formula; quadratic algebra.",
+"usedText": "Coordinate geometry; calculus tangents/normals; physics trajectories/orbits."
 },
 {
 "id": "ma11-11",
@@ -2188,7 +2704,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-11"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Coordinates in space; distance and section formulae.",
+"main": "3D coordinates and distance/section formulae; direction ratios/cosines and line relationships are also part of JEE 3D syllabus.",
+"adv": "Vector/3D geometry within the Advanced Analytical Geometry and Vectors units."
+},
+"prereqText": "2D coordinate geometry; algebra.",
+"usedText": "Vectors; 3D lines; mechanics and spatial modelling."
 },
 {
 "id": "ma11-12",
@@ -2219,7 +2742,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-05"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Intuitive limit idea; derivative as rate of change/slope; derivatives of simple functions in CBSE Class XI scope.",
+"main": "NTA calculus unit includes limits, continuity/differentiability and derivatives of listed algebraic, trigonometric, inverse-trigonometric, exponential/log functions and applications.",
+"adv": "More involved limit/derivative questions within official calculus syllabus."
+},
+"prereqText": "Functions/graphs; algebra; trigonometry.",
+"usedText": "Class XII calculus; kinematics/rates; optimization."
 },
 {
 "id": "ma11-13",
@@ -2237,13 +2767,21 @@ window.CHAPTERS = [
 ],
 "tags": [
 "ncert",
-"jee-main"
+"jee-main",
+"jee-adv"
 ],
 "prereq": [
 "ma11-01"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Mean deviation, variance and standard deviation for grouped/ungrouped data as prescribed in CBSE.",
+"main": "Statistics: mean, median, mode, variance and standard deviation as explicitly listed by NTA.",
+"adv": "Statistics remains a named part of the official Probability and Statistics unit; do not infer unlisted statistical distributions."
+},
+"prereqText": "Arithmetic; averages; fractions.",
+"usedText": "Probability and statistics; data interpretation."
 },
 {
 "id": "ma11-14",
@@ -2274,7 +2812,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-13"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Random experiments; sample space; events; elementary probability.",
+"main": "Probability rules and events; Main also explicitly includes conditional probability, Bayes' theorem, random variable/distribution, mean/variance and binomial distribution in the full syllabus.",
+"adv": "Conditional probability and P&C-based probability problems within official syllabus."
+},
+"prereqText": "Sets; fractions; counting; P&C.",
+"usedText": "Class XII probability; random variables; statistics."
 },
 {
 "id": "ma11-15",
@@ -2322,7 +2867,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-02"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Equivalence relations; one-one/onto functions; inverse trigonometric functions, principal values, domains/ranges and properties.",
+"main": "Relations/functions; inverse trigonometric functions and properties as listed in NTA syllabus.",
+"adv": "Function and inverse-trig reasoning integrated with calculus/algebra within official scope."
+},
+"prereqText": "Sets; function notation; trigonometry; domain/range.",
+"usedText": "Calculus; equations; mappings."
 },
 {
 "id": "ma12-02",
@@ -2349,7 +2901,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-05"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Equivalence relations; one-one/onto functions; inverse trigonometric functions, principal values, domains/ranges and properties.",
+"main": "Relations/functions; inverse trigonometric functions and properties as listed in NTA syllabus.",
+"adv": "Function and inverse-trig reasoning integrated with calculus/algebra within official scope."
+},
+"prereqText": "Sets; function notation; trigonometry; domain/range.",
+"usedText": "Calculus; equations; mappings."
 },
 {
 "id": "ma12-03",
@@ -2379,7 +2938,14 @@ window.CHAPTERS = [
 "unlocks": [
 "ma12-04"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Order/types; equality; zero/identity; transpose; symmetric/skew-symmetric; operations, multiplication and inverse.",
+"main": "Matrices: types, operations, transpose, determinants/inverse connections as specified.",
+"adv": "Parameter-dependent or multi-step matrix problems using listed operations."
+},
+"prereqText": "Algebra; linear equations.",
+"usedText": "Determinants; systems; linear algebra; computation."
 },
 {
 "id": "ma12-04",
@@ -2406,7 +2972,14 @@ window.CHAPTERS = [
 "ma12-03"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Determinants up to 3×3; minors/cofactors; area of triangle; adjoint/inverse; solving linear systems.",
+"main": "Determinants, properties, area of triangle, adjoint/inverse and solution of simultaneous linear equations.",
+"adv": "Use determinant properties and parameter conditions within official syllabus; no unlisted matrix theory assumed."
+},
+"prereqText": "Matrices; algebra; coordinate geometry.",
+"usedText": "Linear systems; engineering computation."
 },
 {
 "id": "ma12-05",
@@ -2445,7 +3018,14 @@ window.CHAPTERS = [
 "L'Hôpital's rule for evaluating indeterminate limits (0/0, ∞/∞)": [
 "jee-adv"
 ]
-}
+},
+"scope": {
+"cbse": "Continuity; chain/implicit/log differentiation; inverse-trig/exponential/log derivatives; second derivatives; rates; monotonicity; tangents/normals; approximations; maxima/minima.",
+"main": "Limits, continuity, differentiability; derivatives of listed functions; chain rule; implicit/log differentiation; rate of change; increasing/decreasing; maxima/minima.",
+"adv": "Multi-condition and parameterised calculus problems within official scope."
+},
+"prereqText": "Functions; limits; algebra; trigonometry.",
+"usedText": "Integration; differential equations; optimization; kinematics."
 },
 {
 "id": "ma12-06",
@@ -2477,7 +3057,14 @@ window.CHAPTERS = [
 "Using derivatives to locate points of inflection (Advanced-style curve analysis)": [
 "jee-adv"
 ]
-}
+},
+"scope": {
+"cbse": "Continuity; chain/implicit/log differentiation; inverse-trig/exponential/log derivatives; second derivatives; rates; monotonicity; tangents/normals; approximations; maxima/minima.",
+"main": "Limits, continuity, differentiability; derivatives of listed functions; chain rule; implicit/log differentiation; rate of change; increasing/decreasing; maxima/minima.",
+"adv": "Multi-condition and parameterised calculus problems within official scope."
+},
+"prereqText": "Functions; limits; algebra; trigonometry.",
+"usedText": "Integration; differential equations; optimization; kinematics."
 },
 {
 "id": "ma12-07",
@@ -2510,7 +3097,14 @@ window.CHAPTERS = [
 "ma12-08",
 "ma12-09"
 ],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Indefinite/definite integrals; substitution, parts, partial fractions; fundamental theorem/properties; areas under/between curves.",
+"main": "Standard integration techniques; definite-integral properties; area bounded by curves as listed.",
+"adv": "Non-routine substitutions/symmetry and multi-step area questions within official scope."
+},
+"prereqText": "Differentiation; algebraic fractions; trig identities; graphs.",
+"usedText": "Differential equations; accumulated quantities; Physics work/charge/area models."
 },
 {
 "id": "ma12-08",
@@ -2534,7 +3128,14 @@ window.CHAPTERS = [
 "ma11-10"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Indefinite/definite integrals; substitution, parts, partial fractions; fundamental theorem/properties; areas under/between curves.",
+"main": "Standard integration techniques; definite-integral properties; area bounded by curves as listed.",
+"adv": "Non-routine substitutions/symmetry and multi-step area questions within official scope."
+},
+"prereqText": "Differentiation; algebraic fractions; trig identities; graphs.",
+"usedText": "Differential equations; accumulated quantities; Physics work/charge/area models."
 },
 {
 "id": "ma12-09",
@@ -2560,7 +3161,14 @@ window.CHAPTERS = [
 "ma12-07"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Order/degree; general/particular solution; formation; first-order first-degree equations.",
+"main": "Formation and solution of differential equations, including separable, homogeneous and linear forms as listed by NTA.",
+"adv": "Applications and transformations within official listed forms."
+},
+"prereqText": "Differentiation; integration; algebra.",
+"usedText": "Growth/decay models; mechanics; circuits."
 },
 {
 "id": "ma12-10",
@@ -2595,7 +3203,14 @@ window.CHAPTERS = [
 "Vector triple product and its geometrical interpretation": [
 "jee-adv"
 ]
-}
+},
+"scope": {
+"cbse": "Scalars/vectors; magnitude/direction; components; position vectors; addition; dot and cross products.",
+"main": "Vector algebra and products, components and geometric applications.",
+"adv": "Vector methods integrated with geometry/mechanics within listed scope."
+},
+"prereqText": "Coordinates; trigonometry; algebra.",
+"usedText": "3D geometry; mechanics; electromagnetism."
 },
 {
 "id": "ma12-11",
@@ -2623,7 +3238,14 @@ window.CHAPTERS = [
 "ma11-11"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Direction ratios/cosines; line equations; angle between lines; shortest distance between skew lines.",
+"main": "3D geometry: coordinates, line equations, angles and shortest distance as listed.",
+"adv": "Vector/analytic geometry synthesis within official scope."
+},
+"prereqText": "Vectors; coordinate geometry; algebra.",
+"usedText": "Spatial geometry; mechanics; engineering graphics."
 },
 {
 "id": "ma12-12",
@@ -2646,7 +3268,14 @@ window.CHAPTERS = [
 "ma11-05"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Objective function; constraints; feasible region; graphical solution/corner-point method.",
+"main": "Not a standalone JEE Main 2026 Paper 1 Mathematics unit.",
+"adv": "Not a standalone JEE Advanced 2026 Mathematics unit."
+},
+"prereqText": "Linear inequalities; coordinate plane; graphs.",
+"usedText": "Applied optimization/modelling; CBSE assessment only unless syllabus changes."
 },
 {
 "id": "ma12-13",
@@ -2674,7 +3303,14 @@ window.CHAPTERS = [
 "ma11-14"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Conditional probability; multiplication theorem; independence; total probability; Bayes; random variables/distributions; mean/variance; Bernoulli trials/binomial distribution.",
+"main": "NTA explicitly includes probability, conditional probability, Bayes' theorem, random variable/distribution and binomial distribution in the full Mathematics syllabus.",
+"adv": "More involved conditional/independence/P&C combinations within listed topics."
+},
+"prereqText": "Sets; counting; P&C; algebra.",
+"usedText": "Statistics; distributions; quantitative modelling."
 },
 {
 "id": "ch12-17",
@@ -2696,7 +3332,6 @@ window.CHAPTERS = [
 ],
 "tags": [
 "old-ncert",
-"jee-main",
 "jee-adv"
 ],
 "prereq": [
@@ -2704,7 +3339,15 @@ window.CHAPTERS = [
 "ch11-04"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "Not a standalone summatively assessed chapter in the CBSE 2026–27 Chemistry course structure; verify school-level/formative treatment separately.",
+"main": "Not a standalone JEE Main 2026 Chemistry unit.",
+"adv": "JEE Advanced explicitly includes crystalline/amorphous classification, unit-cell parameters, crystal systems, close packing, fcc/bcc/hcp, nearest neighbours, ionic radii/radius ratio and point defects."
+},
+"prereqText": "Atomic structure; bonding; geometry; mole concept.",
+"usedText": "Materials chemistry; crystal structures; coordination and ionic solids.",
+"span": "XI–XII"
 },
 {
 "id": "ph12-15",
@@ -2739,6 +3382,679 @@ window.CHAPTERS = [
 "ph12-09"
 ],
 "unlocks": [],
-"topicOverrides": {}
+"topicOverrides": {},
+"scope": {
+"cbse": "CBSE practical work has prescribed experiments; this does not mean every NTA Experimental Skills item is a separate theory chapter.",
+"main": "Explicit JEE Main Experimental Skills unit: measurement/instrument use, mechanics, thermal, electricity, optics and semiconductor experiments listed by NTA.",
+"adv": "Use JEE Advanced official practical/experimental requirements if any are explicitly listed; do not automatically copy Main Unit 20 as an Advanced unit."
+},
+"prereqText": "Units/measurements; relevant experiment theory.",
+"usedText": "Laboratory work; error analysis; instrument interpretation.",
+"span": "XI–XII"
+},
+{
+"id": "en-01",
+"subject": "english",
+"cls": "12",
+"num": 1,
+"label": "A",
+"badge": "A",
+"badgeSmall": "Section",
+"title": "Reading Skills",
+"blurb": "Unseen passages: comprehension, inference and vocabulary in context.",
+"topics": [
+"One unseen passage assessing comprehension, interpretation, analysis, inference and vocabulary in context",
+"One unseen case-based factual passage using verbal/visual inputs such as statistics or charts, assessing comprehension, interpretation, analysis, inference and evaluation",
+"Combined passage length of about 700–750 words",
+"Question types: objective and short-answer (short answers generally 40–50 words)"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "22 marks",
+"topicOverrides": {},
+"note": "This is English Core (301), not English Elective (001). Confirm your subject code with your school if unsure.",
+"unlocks": []
+},
+{
+"id": "en-02",
+"subject": "english",
+"cls": "12",
+"num": 2,
+"label": "B",
+"badge": "B",
+"badgeSmall": "Section",
+"title": "Creative Writing Skills",
+"blurb": "Notice, invitation, letter and article/report writing.",
+"topics": [
+"Notice writing — up to 50 words (4 marks)",
+"Formal/informal invitation and reply — up to 50 words (4 marks)",
+"Letter writing — about 120–150 words; includes job application with biodata/resume or letter to the editor (5 marks)",
+"Article or report writing — about 120–150 words, descriptive/analytical and based on verbal input (5 marks)"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "18 marks",
+"topicOverrides": {},
+"unlocks": [],
+"pdf": {
+"title": "English Writing Section — Class 12",
+"file": "docs/ENGLISH_WRITING_SECTION.pdf",
+"meta": "PDF · 6 pages"
+},
+"templates": [
+{
+"group": "Notice",
+"note": "Up to 50 words · 4 marks",
+"items": [
+{
+"title": "Notice",
+"tag": "Format",
+"lines": [
+"^ORGANISATION",
+"^NOTICE",
+"",
+"DATE (05 October 2026)",
+"",
+"^Heading",
+"~|",
+"~|",
+"^Body",
+"~|",
+"~|",
+"~|",
+"",
+"Name",
+"Designation",
+"Sign"
+],
+"boxed": "notice"
+}
+]
+},
+{
+"group": "Invitation & Reply",
+"note": "Up to 50 words · 4 marks",
+"items": [
+{
+"title": "Formal invitation — card type (large audience)",
+"tag": "Formal",
+"lines": [
+"^• Name of the Host",
+"^• Standard expression (Request your gracious presence / request the pleasure of your company)",
+"^On ________",
+"^• Name of Honoree",
+"^• Day, Date, Time, Venue",
+"",
+"RSVP",
+"Contact –",
+"Address –"
+],
+"boxed": "card"
+},
+{
+"title": "Formal invitation — letter type (individual)",
+"tag": "Formal",
+"lines": [
+"Sender’s Address",
+"Date",
+"Receiver’s Address",
+"Subject – ____",
+"",
+"Respected Sir/Madam",
+"It is with immense pride that _____. We would be greatly obliged if you could spare time from your schedule on _______details___",
+"Kindly confirm your availability at the earliest",
+"",
+"Yours sincerely",
+"Name"
+]
+},
+{
+"title": "Informal invitation — letter type (individual)",
+"tag": "Informal",
+"lines": [
+"Sender’s Address",
+"Date",
+"",
+"Dear ______",
+"You will be pleased to know that ____ on ___details____.",
+"I am sure you will have great time.",
+"",
+"Yours affectionately",
+"Name"
+]
+},
+{
+"title": "Formal reply — letter type",
+"tag": "Formal",
+"lines": [
+"Sender’s Address",
+"Date",
+"Receiver’s Address",
+"Subject – Acceptance of Invitation for __ / Inability to accept the Invitation",
+"",
+"Sir/Madam",
+"I would like you to express my gratitude to you for inviting me to ____. I regret to inform ___ OR I cordially accept the invitation and assure to reach ____",
+"",
+"Warm Regards / Yours sincerely",
+"Name"
+]
+},
+{
+"title": "Informal reply — letter type",
+"tag": "Informal",
+"lines": [
+"Sender’s Address",
+"Date",
+"",
+"Dear ___",
+"Thank you very much for inviting me to _____. I accept the invitation and hope to reach on __details__ OR I will not be able to attend the same due to _____",
+"",
+"Yours affectionately",
+"Name"
+]
+}
+]
+},
+{
+"group": "Letter Writing",
+"note": "About 120–150 words · 5 marks",
+"items": [
+{
+"title": "Letter to the Editor",
+"tag": "Formal",
+"lines": [
+"Sender’s address",
+"Date",
+"Receiver’s Address [The Editor, Daily News, New Delhi]",
+"Subject –",
+"",
+"Sir/Madam",
+"Through the column of your esteemed newspaper, I would like to draw the kind attention of concerned authorities towards / bring to the light the issue of ___SUBJECT___.",
+"1–2 Para of Explanation",
+"I hope the concerned authorities will immediately take action OR I hope this letter will help raise/highlight the importance of ___.",
+"",
+"Thanking You",
+"Yours truly",
+"Name"
+]
+},
+{
+"title": "Job application",
+"tag": "Formal",
+"lines": [
+"Sender’s Address",
+"Date",
+"Receiver’s Address",
+"Subject – ___",
+"",
+"Sir/Madam",
+"In response to your advertisement in __ dated __ for the post of ___ in your Company/school/organisation, I wish to offer my candidature___.",
+"1 para regarding self-advertisement regarding the post and some experience, I am very hardworking honest & punctual.",
+"If given chance to serve you, I assure you that I shall work with utmost sincerity and dedication. Hoping for a favourable response.",
+"Please find enclosed Bio-data for the said purpose.",
+"",
+"Thank you",
+"Yours sincerely",
+"Name"
+]
+},
+{
+"title": "Bio-data / Curriculum Vitae (enclosure)",
+"tag": "Enclosure",
+"lines": [
+"^Bio-Data / Curriculum Vitae",
+"",
+"Name",
+"Father’s Name",
+"DOB",
+"Age",
+"Address",
+"Marital Status",
+"Hobbies",
+"Language",
+"Nationality",
+"Qualification (Include required in advertisement)",
+"Experience (Relevant for the post)",
+"Contact No.",
+"Email Id",
+"References –"
+]
+}
+]
+},
+{
+"group": "Report Writing",
+"note": "About 120–150 words · 5 marks",
+"items": [
+{
+"title": "Report — important points",
+"tag": "Checklist",
+"lines": [
+"• Proper format",
+"• Paras",
+"• Past tense",
+"• Passive voice",
+"• Answer the 5 Ws"
+]
+},
+{
+"title": "Magazine report",
+"tag": "Format",
+"lines": [
+"^Heading",
+"By ____, Designation",
+"",
+"___ was organised by ___ at __. Everyone participated enthusiastically in the event. _______________lines_____.",
+"2–3 Paras",
+"The programme concluded with word of appreciation by __. He/she also expressed his hope to see such events again in future."
+]
+},
+{
+"title": "Newspaper report",
+"tag": "Format",
+"lines": [
+"^Heading",
+"By ____, Designation, Newspaper (if applicable)",
+"",
+"Place, Date: General Overview like – ___ was organised by ___ at __. Everyone participated enthusiastically in the event.",
+"_______________lines_____.",
+"2–3 Paras",
+"The programme concluded with word of appreciation by __. He/she also expressed his hope to see such events again in future."
+]
+}
+]
+},
+{
+"group": "Article Writing",
+"note": "About 120–150 words · 5 marks",
+"items": [
+{
+"title": "Article",
+"tag": "Format",
+"lines": [
+"^Title",
+"By ____, Designation",
+"",
+"• Introductory Paragraph 1",
+"• Paragraph 2 & 3 – Cause / Effects / Advantages / Disadvantages",
+"• Paragraph 4 – Opinion / Comments / Recommendations / Hope"
+]
+}
+]
+}
+]
+},
+{
+"id": "en-03",
+"subject": "english",
+"cls": "12",
+"num": 3,
+"label": "C1",
+"badge": "C1",
+"badgeSmall": "Section",
+"title": "Flamingo — Prose",
+"blurb": "Eight prose lessons from the Flamingo textbook (Section C, 40 marks combined).",
+"topics": [
+"The Last Lesson",
+"Lost Spring",
+"Deep Water",
+"The Rattrap",
+"Indigo",
+"Poets and Pancakes",
+"The Interview",
+"Going Places",
+"Question formats across Section C: extract-based, short-answer and long-answer, assessing comprehension, interpretation, analysis, inference, evaluation and critical thinking"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Section C · 40 marks",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "en-04",
+"subject": "english",
+"cls": "12",
+"num": 4,
+"label": "C2",
+"badge": "C2",
+"badgeSmall": "Section",
+"title": "Flamingo — Poetry",
+"blurb": "Five poems from the Flamingo textbook (Section C, 40 marks combined).",
+"topics": [
+"My Mother at Sixty-Six",
+"Keeping Quiet",
+"A Thing of Beauty",
+"A Roadside Stand",
+"Aunt Jennifer’s Tigers"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Section C · 40 marks",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "en-05",
+"subject": "english",
+"cls": "12",
+"num": 5,
+"label": "C3",
+"badge": "C3",
+"badgeSmall": "Section",
+"title": "Vistas — Supplementary Reader",
+"blurb": "Six pieces from the Vistas supplementary reader (Section C, 40 marks combined).",
+"topics": [
+"The Third Level",
+"The Tiger King",
+"Journey to the End of the Earth",
+"The Enemy",
+"On the Face of It",
+"Memories of Childhood (The Cutting of My Long Hair; We Too are Human Beings)"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Section C · 40 marks",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "en-06",
+"subject": "english",
+"cls": "12",
+"num": 6,
+"label": "IA",
+"badge": "IA",
+"badgeSmall": "Internal",
+"title": "Internal Assessment",
+"blurb": "The 20 internal marks: listening, speaking and project work.",
+"topics": [
+"Listening skills — 5 marks",
+"Speaking skills — 5 marks",
+"Project work — 10 marks"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "20 marks",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-01",
+"subject": "pe",
+"cls": "12",
+"num": 1,
+"label": "U1",
+"badge": "1",
+"badgeSmall": "Unit",
+"title": "Management of Sporting Events",
+"blurb": "Planning, fixtures, tournaments and community sports.",
+"topics": [
+"Functions of sports event management: planning, organising, staffing, directing and controlling",
+"Various committees and their responsibilities before, during and after an event",
+"Fixtures and procedures: knockout (bye and seeding), league (staircase, cyclic and tabular methods), and combination tournaments",
+"Intramural and extramural tournaments: meaning, objectives and significance",
+"Community sports programmes: Sports Day, Health Run, Run for Fun, Run for a Specific Cause and Run for Unity"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-02",
+"subject": "pe",
+"cls": "12",
+"num": 2,
+"label": "U2",
+"badge": "2",
+"badgeSmall": "Unit",
+"title": "Children and Women in Sports",
+"blurb": "Motor development, exercise guidelines and women’s participation.",
+"topics": [
+"Motor development and factors affecting it",
+"Exercise guidelines for different age groups",
+"Common postural deformities and corrective measures",
+"Women’s participation in sports",
+"Female athlete triad"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-03",
+"subject": "pe",
+"cls": "12",
+"num": 3,
+"label": "U3",
+"badge": "3",
+"badgeSmall": "Unit",
+"title": "Yoga as a Preventive Measure for Lifestyle Disease",
+"blurb": "Lifestyle diseases and the yogasanas used against them.",
+"topics": [
+"Obesity, diabetes, asthma and hypertension: causes, symptoms and preventive measures",
+"Relevant yogasanas for the listed lifestyle diseases — procedure, benefits and contraindications as prescribed"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-04",
+"subject": "pe",
+"cls": "12",
+"num": 4,
+"label": "U4",
+"badge": "4",
+"badgeSmall": "Unit",
+"title": "Physical Education and Sports for CWSN",
+"blurb": "Disability sport, classification and inclusion.",
+"topics": [
+"Organisations promoting disability sports (Special Olympics, Paralympics and Deaflympics)",
+"Concept of classification and divisioning in sports",
+"Inclusion in sports: advantages and strategies to make activities accessible"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-05",
+"subject": "pe",
+"cls": "12",
+"num": 5,
+"label": "U5",
+"badge": "5",
+"badgeSmall": "Unit",
+"title": "Sports and Nutrition",
+"blurb": "Diet, nutrients and common nutrition myths.",
+"topics": [
+"Balanced diet and nutrition; macro- and micronutrients",
+"Nutritive and non-nutritive components of diet",
+"Healthy weight, pitfalls of dieting, food intolerance and food myths"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-06",
+"subject": "pe",
+"cls": "12",
+"num": 6,
+"label": "U6",
+"badge": "6",
+"badgeSmall": "Unit",
+"title": "Test and Measurement in Sports",
+"blurb": "Fitness tests and how they are scored.",
+"topics": [
+"Fitness tests: SAI Khelo India fitness tests for school children and relevant age-group protocols",
+"Measurement of health-related fitness; body mass index and related measures",
+"Motor fitness tests, including the prescribed test batteries and their procedures/scoring"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-07",
+"subject": "pe",
+"cls": "12",
+"num": 7,
+"label": "U7",
+"badge": "7",
+"badgeSmall": "Unit",
+"title": "Physiology and Injuries in Sport",
+"blurb": "How exercise changes the body, and what happens when it goes wrong.",
+"topics": [
+"Physiological factors determining physical fitness components",
+"Effects of exercise on the muscular, cardiovascular and respiratory systems",
+"Sports injuries: classification, causes, prevention and basic management",
+"Soft-tissue and bone/joint injuries"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-08",
+"subject": "pe",
+"cls": "12",
+"num": 8,
+"label": "U8",
+"badge": "8",
+"badgeSmall": "Unit",
+"title": "Biomechanics and Sports",
+"blurb": "Newton’s laws, levers and projectiles applied to sport.",
+"topics": [
+"Newton’s laws of motion and their application in sports",
+"Levers and their application in physical activity/sport",
+"Equilibrium, centre of gravity and friction in sports",
+"Projectile and factors affecting its trajectory"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [
+"ph11-04",
+"ph11-03"
+],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-09",
+"subject": "pe",
+"cls": "12",
+"num": 9,
+"label": "U9",
+"badge": "9",
+"badgeSmall": "Unit",
+"title": "Psychology and Sports",
+"blurb": "Personality, motivation, aggression and mental skills.",
+"topics": [
+"Personality: its definition, types and measurement in sports contexts",
+"Motivation, its types and techniques to improve motivation",
+"Exercise adherence; aggression and its management",
+"Psychological attributes such as self-esteem, mental imagery, self-talk and goal setting"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-10",
+"subject": "pe",
+"cls": "12",
+"num": 10,
+"label": "U10",
+"badge": "10",
+"badgeSmall": "Unit",
+"title": "Training in Sports",
+"blurb": "Talent identification, training cycles and conditioning.",
+"topics": [
+"Talent identification and development",
+"Training cycles: micro, meso and macro cycles",
+"Strength, endurance, speed, flexibility and coordinative abilities: methods to develop them",
+"Circuit training; skill, technique, tactics and strategies",
+"Concept of doping and its disadvantages"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "Theory",
+"topicOverrides": {},
+"unlocks": []
+},
+{
+"id": "pe-11",
+"subject": "pe",
+"cls": "12",
+"num": 11,
+"label": "P",
+"badge": "P",
+"badgeSmall": "Practical",
+"title": "Practical Assessment",
+"blurb": "The 30 practical marks.",
+"topics": [
+"Prescribed fitness test(s)",
+"Practical record/file",
+"Yoga/asana-related practical component",
+"One IOA-recognised sport/game of choice, with a labelled field/equipment diagram plus rules, terminology and skills",
+"Follow the exact practical instructions and mark distribution in the official CBSE document and your school’s practical schedule"
+],
+"tags": [
+"cbse-board"
+],
+"prereq": [],
+"marks": "30 marks",
+"topicOverrides": {},
+"unlocks": []
 }
 ];
